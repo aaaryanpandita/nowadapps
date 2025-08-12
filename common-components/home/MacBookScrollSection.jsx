@@ -15,7 +15,7 @@ export function MacBookScrollSection() {
         //     <Badge className="h-10 w-10 -rotate-12 transform" />
         //   </a>
         // }
-        src={`assets/mac/linear.webp`}
+        src={`assets/mac/linear.png`}
         showGradient={false}
       />
     </div>
