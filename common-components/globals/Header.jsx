@@ -1,93 +1,38 @@
 "use client";
-import {
-  Navbar,
-  NavBody,
-  NavItems,
-  MobileNav,
-  NavbarLogo,
-  NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
-import { useState } from "react";
+import { useAppKit } from "@reown/appkit/react";
+import { IconWallet } from "@tabler/icons-react";
+import Link from "next/link";
+import React from "react";
+import { useAccount } from "wagmi";
 
-export function NavbarStyled({ children }) {
-  const navItems = [
-    {
-      name: "Features",
-      link: "#features",
-    },
-    {
-      name: "Pricing",
-      link: "#pricing",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
-  ];
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const NavbarStyled = () => {
+  const { open } = useAppKit();
+  const { isConnected } = useAccount();
 
   return (
-    <div className="relative w-full">
-      <Navbar>
-        {/* Desktop Navigation */}
-        <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
-          </div>
-        </NavBody>
-
-        {/* Mobile Navigation */}
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
-          </MobileNavHeader>
-
-          <MobileNavMenu
-            isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
+    <div className=" bg-sub-card">
+      <div className="container mx-auto flex justify-between items-center">
+        <Link href={"/"}>
+          <img
+            src="/assets/brand/Nowa logo horizonatal.svg"
+            alt=""
+            className="object-contain h-16 cursor-pointer"
+          />
+        </Link>
+        {isConnected ? (
+          <appkit-account-button />
+        ) : (
+          <button
+            className="bg-brand text-black flex flex-row gap-2 h-12 items-center justify-center w-52 rounded-4xl cursor-pointer"
+            onClick={open}
           >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
-              >
-                <span className="block">{item.name}</span>
-              </a>
-            ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
-            </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
-      {children}
-      {/* Navbar */}
+            <IconWallet />
+            <p> Connect Wallet</p>
+          </button>
+        )}
+      </div>
     </div>
   );
-}
+};
+
+export default NavbarStyled;
