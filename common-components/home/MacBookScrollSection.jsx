@@ -10,11 +10,11 @@ export function MacBookScrollSection() {
             This Macbook is built with Tailwindcss. <br /> No kidding.
           </span>
         }
-        badge={
-          <a href="https://peerlist.io/manuarora">
-            <Badge className="h-10 w-10 -rotate-12 transform" />
-          </a>
-        }
+        // badge={
+        //   <a href="https://peerlist.io/manuarora">
+        //     <Badge className="h-10 w-10 -rotate-12 transform" />
+        //   </a>
+        // }
         src={`assets/mac/linear.webp`}
         showGradient={false}
       />

@@ -126,7 +126,13 @@ export const Lid = ({ scaleX, scaleY, rotate, translate, src }) => {
           className="absolute inset-0 flex items-center justify-center rounded-lg bg-[#010101]"
         >
           <span className="text-white">
-            <AceternityLogo />
+            {/* <AceternityLogo /> */}
+
+            <img
+              src="/assets/brand/onlyLogo.png"
+              alt=""
+              className="object-contain h-10"
+            />
           </span>
         </div>
       </div>
