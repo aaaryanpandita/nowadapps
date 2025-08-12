@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 w-full h-full bg-brand-background z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
       <div className=" h-[600px] max-w-7xl grid grid-cols-12 mt-2 relative z-20 w-full">
-        <div className="col-span-6 flex flex-col items-start gap-10 relative  ">
+        <div className="col-span-12 md:col-span-6 flex flex-col items-start gap-10 relative  ">
           <p className="text-6xl">Welcome to Nowa — Built with AI</p>
           <p className="relative z-10">
             The Future of Crypto Prediction is AI-Driven – Join NOWA.
@@ -27,7 +27,7 @@ const HeroSection = () => {
             className="absolute object-contain w-96 -right-20 -bottom-20"
           /> */}
         </div>
-        <div className="col-span-6 bg-orange-300"> asfd</div>
+        <div className="col-span-12 md:col-span-6  bg-orange-300"> asfd</div>
       </div>
     </div>
   );
