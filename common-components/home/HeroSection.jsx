@@ -130,8 +130,6 @@ const HeroSection = () => {
       ? formatUnits(totalClaimAirdrop)
       : 0;
 
-    console.log(totalAirDrop, totalClaimAirdrop, "asdasdasdasd");
-
     const leftToClaimDrop = Number(totalAirDrop) - Number(totalClaimedDrops);
 
     const percentage =
@@ -241,24 +239,27 @@ const HeroSection = () => {
     }
   };
 
-  console.log(airdropInfo, "airdropInfo>>>");
-
   return (
     <div className=" lg:h-[800px] relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg">
       <div className="absolute inset-0 w-full h-full bg-brand-background z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
-      <div className=" lg:h-[600px] max-w-7xl grid grid-cols-12 mt-2 relative z-20 w-full ">
+      <div className=" lg:h-[600px] container mx-auto grid grid-cols-12 mt-2 relative z-20 w-full ">
         <div className="col-span-12 lg:col-span-6 flex flex-col items-start gap-10 relative  ">
           <p className="text-6xl">Welcome to Nowa — Built with AI</p>
           <p className="relative z-10">
             The Future of Crypto Prediction is AI-Driven – Join NOWA.
           </p>
           <button className="bg-brand  py-2 flex flex-row px-3 gap-3 justify-center items-center rounded-3xl ">
-            <p> Get Started Now</p>
+            <p className="text-black"> Get Started Now</p>
             <div className="bg-white rounded-full h-8 w-8 flex justify-center items-center">
               <ArrowRight color="#000" />
             </div>
           </button>
+          {/* <img
+            src="/assets/home/hero.png"
+            alt=""
+            className="object-contain h-[400px]"
+          /> */}
         </div>
         <div className="col-span-12 lg:col-span-6  relative mt-8 lg:mt-0">
           <div className="grid grid-cols-12 md:grid-rows-12 h-full w-full bg-[#121313] gap-4">
