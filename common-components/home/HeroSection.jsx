@@ -261,8 +261,8 @@ const HeroSection = () => {
             className="object-contain h-[400px]"
           /> */}
         </div>
-        <div className="col-span-12 lg:col-span-6  relative mt-8 lg:mt-0">
-          <div className="grid grid-cols-12 md:grid-rows-12 h-full w-full bg-[#121313] gap-4">
+        <div className="col-span-12 lg:col-span-6  relative mt-8 lg:mt-0 ">
+          <div className="grid grid-cols-12 md:grid-rows-12 h-full w-full bg-[#121313] gap-4 p-6 shadow-[0px_0px_7.6px_7px_rgba(100,231,158,0.25)] rounded-2xl">
             <div className="col-span-12 md:col-span-5 row-span-6 bg-card-bg flex justify-between items-center flex-col p-4 rounded-2xl min-h-72 md:min-h-auto">
               <h1 className="font-semibold">Airdrop Phase 1</h1>
 
