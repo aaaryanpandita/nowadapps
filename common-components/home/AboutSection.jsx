@@ -1,11 +1,12 @@
 import React from "react";
 import AboutCard from "../misc/about-card";
+import FallingText from "@/components/FallingText/FallingText";
 
 const AboutSection = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="max-w-7xl w-full grid grid-cols-12 md:grid-rows-12  md:h-[1200px] gap-4 ">
-        <div className="col-span-12 md:col-span-8 md:row-span-2 text-4xl">
+        <div className="col-span-12 md:col-span-8 md:row-span-2 text-4xl font-semibold">
           Harness the power of AI to forecast the market. Challenge the
           algorithm, outperform it, and earn rewards.{" "}
         </div>
@@ -60,8 +61,18 @@ const AboutSection = () => {
           </AboutCard>
         </div>
         <div className="col-span-12 md:col-span-4 md:row-span-2 text-2xl hidden md:flex"></div>
-        <div className="col-start-2 col-span-3 row-span-4 bg-brand/40 text-2xl p-4 rounded-2xl">
+        <div className="md:col-start-2 col-span-12 md:col-span-3 md:row-span-4 bg-brand/40 text-2xl p-4 rounded-2xl">
           <p>We are suitable for</p>
+          <FallingText
+            text={`Transparency Accuracy Community-Driven Global-React Decentralized Governance`}
+            highlightClass="highlighted"
+            trigger="hover"
+            backgroundColor="transparent"
+            wireframes={false}
+            gravity={0.56}
+            fontSize="1.4rem"
+            mouseConstraintStiffness={0.9}
+          />
         </div>
         <div className="col-span-12 md:col-span-4 md:row-span-3  text-2xl">
           <AboutCard>
