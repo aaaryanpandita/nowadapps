@@ -76,7 +76,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} antialiased bg-brand-background dark`}
+        className={`${poppins.variable} antialiased bg-brand-background dark relative`}
       >
         <BlockchainProvider cookies={cookies}>
           {/* <ReactLenis root /> */}

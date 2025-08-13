@@ -241,7 +241,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className=" lg:h-[800px] relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg">
+    <div className=" lg:h-[800px] relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg pt-40">
       <div className="absolute inset-0 w-full h-full bg-brand-background z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
       <div className=" lg:h-[600px] container mx-auto grid grid-cols-12 mt-2 relative z-20 w-full ">

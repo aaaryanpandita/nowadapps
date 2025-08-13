@@ -10,7 +10,7 @@ const NavbarStyled = () => {
   const { isConnected } = useAccount();
 
   return (
-    <div className=" bg-sub-card">
+    <div className="absolute top-6 bg-sub-card z-50 w-full ">
       <div className="container mx-auto flex justify-between items-center">
         <Link href={"/"}>
           <img
