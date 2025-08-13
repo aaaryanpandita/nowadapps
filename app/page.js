@@ -1,6 +1,8 @@
 "use client";
 
+import Footer from "@/common-components/globals/Footer";
 import AboutSection from "@/common-components/home/AboutSection";
+import ChartSection from "@/common-components/home/ChartSection";
 import HeroSection from "@/common-components/home/HeroSection";
 import { MacBookScrollSection } from "@/common-components/home/MacBookScrollSection";
 import NextGenSection from "@/common-components/home/NextGenSection";
@@ -12,6 +14,8 @@ export default function Home() {
       <MacBookScrollSection />
       <AboutSection />
       <NextGenSection />
+      <ChartSection />
+      <Footer />
     </div>
   );
 }
