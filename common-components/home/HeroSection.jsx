@@ -250,9 +250,9 @@ const HeroSection = () => {
           <p className="relative z-10">
             The Future of Crypto Prediction is AI-Driven – Join NOWA.
           </p>
-          <button className="bg-brand  py-2 flex flex-row px-3 gap-3 justify-center items-center rounded-3xl ">
+          <button className="bg-brand  py-2 flex flex-row px-3 gap-3 justify-center items-center rounded-3xl group cursor-pointer">
             <p className="text-black"> Get Started Now</p>
-            <div className="bg-white rounded-full h-8 w-8 flex justify-center items-center">
+            <div className="bg-white rounded-full h-8 w-8 flex justify-center items-center group-hover:-rotate-45 group-hover:shadow-2xl group-hover:shadow-card-bg transition-all duration-150 delay-150 ease-linear">
               <ArrowRight color="#000" />
             </div>
           </button>
