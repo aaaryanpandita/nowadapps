@@ -1,10 +1,17 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "../misc/container";
+import { useInView } from "motion/react";
+import clsx from "clsx";
+import * as motion from "motion/react-client";
 
 const NextGenSection = () => {
+  const boxRef = useRef(null);
+  const isInView = useInView(boxRef);
+
   return (
-    <Container>
-      <div>
+    <Container className={"bg-black pt-10"}>
+      <div ref={boxRef}>
         <p className="text-4xl font-semibold">
           <span className="text-brand">NOWA</span> is a next-generation
           cryptocurrency platform built on the{" "}
@@ -13,8 +20,16 @@ const NextGenSection = () => {
           highly accurate price predictions for digital assets.
         </p>
         <div className="w-full grid grid-cols-12">
-          <div className="col-span-12 md:col-span-6">
-            <img src="/assets/next-gen/toplap.avif" alt="" />
+          <div className="col-span-12 md:col-span-6 overflow-hidden ">
+            <img
+              src="/assets/next-gen/toplap.avif"
+              alt=""
+              className={clsx(
+                `transition-all delay-0 duration-300 ease-linear relative ${
+                  isInView ? "right-0" : "right-[600px]"
+                } ${isInView ? "opacity-100" : "opacity-0"}`
+              )}
+            />
           </div>
           <div className="col-span-12 md:col-span-6 flex items-start flex-col justify-center">
             <p className="text-brand text-2xl font-medium">Why Choose NOWA?</p>

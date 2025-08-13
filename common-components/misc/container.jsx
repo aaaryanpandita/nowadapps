@@ -1,8 +1,9 @@
+import clsx from "clsx";
 import React from "react";
 
-const Container = ({ children }) => {
+const Container = ({ children, className }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className={clsx("flex items-center justify-center", className)}>
       <div className="max-w-7xl w-full">{children}</div>
     </div>
   );

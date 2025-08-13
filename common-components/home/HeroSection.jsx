@@ -343,7 +343,7 @@ const HeroSection = () => {
                   </p>
                 </div>
                 <button
-                  className="bg-brand w-full lg:w-52 text-black py-2 rounded-2xl mt-4 md:mt-0"
+                  className="bg-brand w-full lg:w-52 text-black py-2 rounded-2xl mt-4 md:mt-0 cursor-pointer"
                   onClick={() => {
                     if (!isConnected) {
                       open();
