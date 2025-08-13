@@ -20,7 +20,7 @@ export default function Home() {
         <NextGenSection />
         <ChartSection />
         <TimeLineSection />
-        <MarqueeSection />
+        {/* <MarqueeSection /> */}
       </div>
     </div>
   );
