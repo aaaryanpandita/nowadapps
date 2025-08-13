@@ -26,7 +26,8 @@ export const Timeline = ({ data }) => {
     <div className="w-full font-sans md:px-10" ref={containerRef}>
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-4xl font-semibold mb-4 text-black dark:text-white max-w-4xl">
-          Our Journey Ahead- From Launch to Leadership
+          Our <span className="text-brand">Journey</span> Ahead- From Launch to{" "}
+          <span className="text-brand">Leadership</span>
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-2xl max-w-sm">
           The Evolution of an AI-Powered Trading Platform

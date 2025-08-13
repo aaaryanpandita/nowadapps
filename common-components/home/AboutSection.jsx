@@ -7,8 +7,10 @@ const AboutSection = () => {
     <div className="flex items-center justify-center">
       <div className="max-w-7xl w-full grid grid-cols-12 md:grid-rows-12  md:h-[1200px] gap-4 ">
         <div className="col-span-12 md:col-span-8 md:row-span-2 text-4xl font-semibold">
-          Harness the power of AI to forecast the market. Challenge the
-          algorithm, outperform it, and earn rewards.{" "}
+          Harness the power of <span className="text-brand"> AI</span> to
+          forecast the market. Challenge the{" "}
+          <span className="text-brand">algorithm</span>, outperform it, and{" "}
+          <span className="text-brand">earn rewards</span>.{" "}
         </div>
         <div className="col-span-12 md:col-span-4 md:row-span-7 text-2xl ">
           <AboutCard>

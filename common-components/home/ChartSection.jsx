@@ -7,6 +7,16 @@ import { cn } from "@/lib/utils";
 const ChartSection = () => {
   return (
     <Container>
+      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+        <h2 className="text-4xl font-semibold mb-4 text-black dark:text-white ">
+          Powering the <span className="text-brand">Future</span> of Our
+          Ecosystem
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-300 text-2xl max-w-sm">
+          How our token fuels innovation, rewards holders, and sustains
+          long-term value.
+        </p>
+      </div>
       <div className="w-full h-full grid grid-cols-12">
         <div className="col-span-12 lg:col-span-6 min-h-96 lg:min-h-auto ">
           <NightingaleChart cardData={cardData} />
