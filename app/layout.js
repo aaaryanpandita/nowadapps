@@ -7,6 +7,7 @@ import { headers } from "next/headers";
 import { Toaster } from "sonner";
 import NavbarStyled from "@/common-components/globals/Header";
 import { ReactLenis } from "lenis/react";
+import Footer from "@/common-components/globals/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -74,10 +75,12 @@ export default async function RootLayout({ children }) {
         className={`${poppins.variable} antialiased bg-brand-background dark`}
       >
         <BlockchainProvider cookies={cookies}>
-          <ReactLenis root />
+          {/* <ReactLenis root /> */}
 
           <NavbarStyled />
           {children}
+          <Footer />
+
           <Toaster theme="dark" />
           {/* <Footer /> */}
         </BlockchainProvider>

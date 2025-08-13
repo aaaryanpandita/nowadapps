@@ -328,7 +328,7 @@ const HeroSection = () => {
             </div>
             <div className="col-span-12 md:col-span-12 row-span-3 bg-card-bg flex items-center justify-center flex-col px-6 md:px-10 gap-4 rounded-2xl min-h-40 md:min-h-auto">
               <p>Claim & Stake</p>
-              <div className="flex items-center justify-between w-full">
+              <div className="flex items-center justify-between w-full flex-col md:flex-row">
                 <div className="flex items-center gap-2 bg-black/50 px-4 py-2 rounded-4xl">
                   <img
                     src="/assets/brand/onlyLogo.png"
@@ -343,7 +343,7 @@ const HeroSection = () => {
                   </p>
                 </div>
                 <button
-                  className="bg-brand w-20 lg:w-52 text-black py-2 rounded-2xl"
+                  className="bg-brand w-full lg:w-52 text-black py-2 rounded-2xl mt-4 md:mt-0"
                   onClick={() => {
                     if (!isConnected) {
                       open();
@@ -381,7 +381,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="col-span-12 row-span-3 bg-card-bg flex flex-col md:flex-row justify-between items-center p-6 md:px-10 rounded-2xl gap-12 md:gap-0">
-              <div className="flex flex-row md:flex-col justify-between w-full">
+              <div className="flex flex-col justify-between w-full">
                 <p>My Earning</p>
                 <p className="text-2xl font-semibold ">
                   {formatCurrency({
