@@ -34,7 +34,11 @@ export const metadata = {
   icons: {
     icon: [
       "/assets/brand/onlyLogo.png",
-      { url: "/favicon.ico", type: "image/x-icon", sizes: "16x16" },
+      {
+        url: "/assets/brand/onlyLogo.png",
+        type: "image/x-icon",
+        sizes: "16x16",
+      },
     ],
     apple: "/assets/brand/onlyLogo.png",
     shortcut: "/assets/brand/onlyLogo.png",

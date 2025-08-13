@@ -6,72 +6,106 @@ import { useTailwindBreakpoints } from "@/hooks/useTailwindBreakpoints";
 echarts.registerTheme("my_theme", {
   backgroundColor: "rgb(18 19 19)",
 });
-export default function NightingaleChart() {
+export default function NightingaleChart({ cardData }) {
   const { sm, md, lg, xl, "2xl": xxl } = useTailwindBreakpoints();
 
-  const chartSize = useMemo(() => {
-    if (md) {
-      return [90, 200];
-    }
-
-    return [90, 160];
-  });
+  const chartDataFormatted = useMemo(() => {
+    const labels = cardData?.map((item) => item?.label);
+    const color = cardData?.map((item) => item?.color);
+    const data = cardData?.map((item) => {
+      return {
+        value: item?.amount,
+        name: item?.label,
+      };
+    });
+    return {
+      labels,
+      data,
+      color,
+    };
+  }, [cardData]);
 
   const option = {
-    title: {
-      // text: "Nightingale Chart",
-      // subtext: "Fake Data",
-      left: "center",
+    color: chartDataFormatted?.color,
+    tooltip: {
+      trigger: "item",
     },
     legend: {
+      top: "5%",
       left: "center",
-      top: "bottom",
-      orient: "vertical",
-      data: [
-        "rose1",
-        "rose2",
-        "rose3",
-        "rose4",
-        "rose5",
-        "rose6",
-        "rose7",
-        "rose8",
-      ],
+      show: false,
     },
-
     series: [
       {
-        name: "Area Mode",
+        name: "",
         type: "pie",
-        radius: chartSize,
-        roseType: "area",
+        radius: ["65%", sm ? "90%" : "95%"],
+        avoidLabelOverlap: false,
         itemStyle: {
-          borderRadius: 5,
+          borderRadius: 10,
+          borderColor: "#fff",
+          borderWidth: 2,
         },
         label: {
-          show: sm,
-          color: "#ffffff",
+          show: false,
+          position: "center",
         },
-
-        data: [
-          { value: 30, name: "rose 1" },
-          { value: 28, name: "rose 2" },
-          { value: 26, name: "rose 3" },
-          { value: 24, name: "rose 4" },
-          { value: 22, name: "rose 5" },
-          { value: 20, name: "rose 6" },
-          { value: 18, name: "rose 7" },
-          { value: 16, name: "rose 8" },
-        ],
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 20,
+            fontWeight: "bold",
+            color: "white",
+          },
+        },
+        labelLine: {
+          show: false,
+        },
+        data: chartDataFormatted?.data,
       },
     ],
   };
+
+  // const option = {
+  //   color: chartDataFormatted?.color,
+  //   title: {
+  //     // text: "Nightingale Chart",
+  //     // subtext: "Fake Data",
+  //     left: "center",
+  //   },
+  //   legend: {
+  //     left: "center",
+  //     top: "bottom",
+  //     orient: "vertical",
+  //     data: chartDataFormatted?.labels,
+  //     show: false,
+  //   },
+
+  //   series: [
+  //     {
+  //       name: "Area Mode",
+  //       type: "pie",
+  //       radius: chartSize,
+  //       // roseType: "area",
+  //       itemStyle: {
+  //         borderRadius: 5,
+  //       },
+  //       label: {
+  //         show: false,
+  //         // show: sm,
+  //         // color: "#ffffff",
+  //       },
+
+  //       data: chartDataFormatted?.data,
+  //     },
+  //   ],
+  // };
 
   return (
     <ReactECharts
       theme={"my_theme"}
       option={option}
-      style={{ height: sm ? "600px" : "400px" }}
+      style={{ height: "100%", padding: "50px" }}
     />
   );
 }

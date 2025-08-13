@@ -10,14 +10,18 @@ import NextGenSection from "@/common-components/home/NextGenSection";
 import { TimeLineSection } from "@/common-components/home/TimeLineSection";
 export default function Home() {
   return (
-    <div className="flex flex-col gap-44 mx-2 mb-28">
-      <HeroSection />
+    <div>
+      <div className="flex flex-col gap-44 mx-2 ">
+        <HeroSection />
+      </div>
       <MacBookScrollSection />
-      <AboutSection />
-      <NextGenSection />
-      <ChartSection />
-      <TimeLineSection />
-      <MarqueeSection />
+      <div className="flex flex-col gap-44 mx-2 mb-28">
+        <AboutSection />
+        <NextGenSection />
+        <ChartSection />
+        <TimeLineSection />
+        <MarqueeSection />
+      </div>
     </div>
   );
 }

@@ -28,7 +28,12 @@
 //                 {section.title}
 //               </h4>
 
-import { IconBrandTelegram } from "@tabler/icons-react";
+import {
+  IconBrandInstagram,
+  IconBrandTelegram,
+  IconBrandTwitter,
+} from "@tabler/icons-react";
+import Link from "next/link";
 
 //               {section.links && (
 //                 <ul className="text-sm transition-all duration-500">
@@ -238,19 +243,37 @@ const Footer = () => {
           </div>
           <div className="col-span-12 md:col-span-6 flex items-center md:items-end flex-col gap-6 mt-4 md:mt-0">
             <p className="text-brand">Follow us On</p>
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-row gap-2">
+            <div className="flex flex-col gap-4">
+              <Link
+                className="flex flex-row gap-2 "
+                target="_blank"
+                href={"https://t.me/nowatoken"}
+              >
                 <IconBrandTelegram color="rgb(0, 255, 169)" />
-                <p className="text-white/80">Telegram</p>
-              </div>
-              <div className="flex flex-row gap-2">
-                <IconBrandTelegram color="rgb(0, 255, 169)" />
-                <p className="text-white/80">Telegram</p>
-              </div>
-              <div className="flex flex-row gap-2">
-                <IconBrandTelegram color="rgb(0, 255, 169)" />
-                <p className="text-white/80">Telegram</p>
-              </div>
+                <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
+                  Telegram
+                </p>
+              </Link>
+              <Link
+                className="flex flex-row gap-2"
+                target="_blank"
+                href={"https://www.instagram.com/nowatoken/"}
+              >
+                <IconBrandTwitter color="rgb(0, 255, 169)" />
+                <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
+                  X (Twitter)
+                </p>
+              </Link>
+              <Link
+                className="flex flex-row gap-2"
+                target="_blank"
+                href={"https://www.instagram.com/nowatoken/"}
+              >
+                <IconBrandInstagram color="rgb(0, 255, 169)" />
+                <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
+                  Instagram
+                </p>
+              </Link>
             </div>
           </div>
         </div>
