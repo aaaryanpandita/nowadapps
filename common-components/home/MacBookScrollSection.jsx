@@ -6,8 +6,9 @@ export function MacBookScrollSection() {
     <div className="w-full overflow-hidden bg-brand-background">
       <MacbookScroll
         title={
-          <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
+          <span className="text-4xl font-semibold">
+            The Tools You Need to <span className="text-brand">Outperform</span>{" "}
+            the Market.
           </span>
         }
         // badge={

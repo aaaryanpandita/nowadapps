@@ -3,39 +3,21 @@ import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 const reviews = [
   {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
     img: "https://avatar.vercel.sh/jack",
   },
   {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
     img: "https://avatar.vercel.sh/jill",
   },
   {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/john",
   },
   {
-    name: "Jane",
-    username: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/jane",
   },
   {
-    name: "Jenny",
-    username: "@jenny",
-    body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/jenny",
   },
   {
-    name: "James",
-    username: "@james",
-    body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/james",
   },
 ];
@@ -44,7 +26,7 @@ const ReviewCard = ({ img, name, username, body }) => {
   return (
     <figure
       className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4"
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border"
         // light styles
         // "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
@@ -52,13 +34,7 @@ const ReviewCard = ({ img, name, username, body }) => {
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
+        <img className="object-contain h-6 w-full" alt="" src={img} />
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
     </figure>
