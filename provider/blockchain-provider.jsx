@@ -1,13 +1,9 @@
 "use client";
 import React, { Fragment } from "react";
 import { createAppKit } from "@reown/appkit/react";
-import {
-  cookieStorage,
-  cookieToInitialState,
-  createStorage,
-  WagmiProvider,
-} from "wagmi";
-import { arbitrum, bsc, bscTestnet, mainnet } from "@reown/appkit/networks";
+import { cookieToInitialState, WagmiProvider } from "wagmi";
+import { cookieStorage, createStorage } from "@wagmi/core";
+import { bsc, bscTestnet } from "@reown/appkit/networks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 import { ChainConfig } from "@/const";
@@ -15,19 +11,20 @@ import { ChainConfig } from "@/const";
 export const queryClient = new QueryClient();
 const projectId = "9423e7846505f308df758d42e7c92ff7";
 const metadata = {
-  name: "AppKit",
-  description: "AppKit Example",
-  url: "https://example.com",
+  name: "NOWA",
+  description: "NOWA DAPP",
+  url: "https://nowadapps.vercel.app/",
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
-export const networks = [...ChainConfig]; /////Testnet
+// export const networks = [...ChainConfig]; /////Testnet
+export const networks = [bscTestnet, bsc]; /////Testnet
 // export const networks = [bsc]; /////Mainnet
 
 export const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({
     storage: cookieStorage,
   }),
-  ssr: false,
+  ssr: true,
   projectId,
   networks,
 });
@@ -36,9 +33,10 @@ const modal = createAppKit({
   adapters: [wagmiAdapter],
   projectId,
   networks: networks,
-  metadata: metadata,
+  // metadata: metadata,
+  defaultNetwork: bscTestnet,
   features: {
-    analytics: false,
+    analytics: true,
     email: false,
     socials: [],
     swaps: false,

@@ -241,10 +241,10 @@ const HeroSection = () => {
   };
 
   return (
-    <div className=" lg:h-[860px] relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg pt-20">
+    <div className="relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg ">
       <div className="absolute inset-0 w-full h-full bg-brand-background z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
-      <div className=" lg:h-[600px] container mx-auto grid grid-cols-12 mt-2 relative z-20 w-full ">
+      <div className=" container mx-auto grid grid-cols-12 mt-2 relative z-20 w-full pt-32  sm:py-36">
         <div className="col-span-12 lg:col-span-6 flex flex-col items-start gap-10 relative  ">
           <p className="text-6xl">Welcome to Nowa — Built with AI</p>
           <p className="relative z-10">
@@ -267,7 +267,7 @@ const HeroSection = () => {
             <div className="col-span-12 md:col-span-5 row-span-6 bg-card-bg flex justify-between items-center flex-col p-4 rounded-2xl min-h-72 md:min-h-auto">
               <h1 className="font-semibold">Airdrop Phase 1</h1>
 
-              <div className="relative w-30 flex justify-center items-center h-20">
+              <div className="relative w-30 flex justify-center items-center h-40">
                 <CircularProgressbarWithChildren
                   value={airdropInfo?.percentage}
                   className="fill-brand"
