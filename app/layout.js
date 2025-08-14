@@ -8,6 +8,7 @@ import { Toaster } from "sonner";
 import NavbarStyled from "@/common-components/globals/Header";
 import { ReactLenis } from "lenis/react";
 import Footer from "@/common-components/globals/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -80,7 +81,7 @@ export default async function RootLayout({ children }) {
       >
         <BlockchainProvider cookies={cookies}>
           {/* <ReactLenis root /> */}
-
+          <GoogleAnalytics gaId="G-EYXKM29811" />
           <NavbarStyled />
           {children}
           <Footer />

@@ -17,7 +17,7 @@ const data = [
           Phase 1 – Foundation
         </p>
         <ol className="text-2xl">
-          <li>1. Token Launch on BSC</li>
+          <li>1. Token Launch</li>
           <li>2. Airdrop & Staking Program Live</li>
           <li>3. AI Prediction Engine (Beta)</li>
         </ol>
@@ -33,8 +33,8 @@ const data = [
         </p>
         <ol className="text-2xl">
           <li>1. Launch of "Beat the AI" Mode</li>
-          <li>2. Global Leaderboards & Competitions</li>
-          <li>3. Mobile App Beta Testing</li>
+          <li>2. AI Model 2.0 with Self-Learning</li>
+          <li>3. Strategic Exchange Listings</li>
         </ol>
       </div>
     ),
@@ -49,7 +49,6 @@ const data = [
         <ol className="text-2xl">
           <li>1. Multi-Chain Integration</li>
           <li>2. AI Model 2.0 with Self-Learning</li>
-          <li>3. Strategic Exchange Listings</li>
           <li>3. Global Marketing Campaigns</li>
         </ol>
       </div>
@@ -63,10 +62,25 @@ const data = [
           Phase 4 – Ecosystem Development
         </p>
         <ol className="text-2xl">
-          <li>1. Multi-Chain Integration</li>
-          <li>2. AI Model 2.0 with Self-Learning</li>
-          <li>3. Strategic Exchange Listings</li>
-          <li>3. Global Marketing Campaigns</li>
+          <li>1. Prediction Liquidity Pools</li>
+          <li>2. AI Trading Signals Marketplace</li>
+          <li>3. DAO Governance Launch</li>
+          <li>3. Institutional API Access</li>
+        </ol>
+      </div>
+    ),
+  },
+  {
+    title: "05",
+    content: (
+      <div>
+        <p className="mb-8 text-4xl font-semibold dark:text-neutral-200">
+          Phase 5 – Global Domination & Web3 AI Hub
+        </p>
+        <ol className="text-2xl">
+          <li>1. Full-Scale AI Trading Platform</li>
+          <li>2. AI Data Monetization</li>
+          <li>3. Sustainability Plan</li>
         </ol>
       </div>
     ),
