@@ -2,12 +2,35 @@ import React, { useEffect, useState } from "react";
 import Modal from "../misc/modal";
 import { DialogTitle } from "@headlessui/react";
 import { IconX } from "@tabler/icons-react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import { connectWallet } from "@/queries";
+import { useAccount } from "wagmi";
 
 const ParentRefModal = ({ open, close }) => {
   const [refCode, setRefCode] = useState("");
   const searchParams = useSearchParams();
+  const { address, isConnected } = useAccount();
+  const {
+    mutateAsync: mutateConnectWallet,
+    isPending: mutateConnectWalletPending,
+  } = useMutation({
+    mutationFn: () => {
+      return connectWallet({
+        walletAddress: address,
+        parentReferralCode: refCode,
+      });
+    },
+    onSuccess: (data) => {
+      if (data?.data?.responseCode == 200) {
+        const token = data?.data?.result?.token;
+      }
+    },
+    onError: (err) => {
+      console.log(err, "Error connect wallet");
+    },
+  });
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
@@ -41,10 +64,18 @@ const ParentRefModal = ({ open, close }) => {
             setRefCode(value);
           }}
         />
-        <button className="bg-brand flex flex-row  w-40 h-12 rounded-3xl justify-between items-center px-7  text-black ">
+        <button
+          className="bg-brand flex flex-row  w-40 h-12 rounded-3xl justify-between items-center px-7  text-black "
+          onClick={() => {
+            if (mutateConnectWalletPending || !refCode) {
+              return;
+            }
+            mutateConnectWallet();
+          }}
+        >
           <p>Submit</p>
           <div className="bg-black/20 rounded text-black/50">
-            <ArrowRight />
+            {mutateConnectWalletPending ? <Loader /> : <ArrowRight />}
           </div>
         </button>
       </div>

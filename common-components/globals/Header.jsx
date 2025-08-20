@@ -20,7 +20,14 @@ const NavbarStyled = () => {
           />
         </Link>
         {isConnected ? (
-          <appkit-account-button />
+          <div className="flex flex-row gap-4 items-center">
+            <Link href={"/dashboard"}>
+              <p className="cursor-pointer hover:underline">
+                Referral Dashboard
+              </p>
+            </Link>
+            <appkit-account-button />
+          </div>
         ) : (
           <button
             className="bg-brand text-black flex flex-row gap-2 h-12 items-center justify-center w-52 rounded-4xl cursor-pointer"

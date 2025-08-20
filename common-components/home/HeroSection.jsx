@@ -27,13 +27,21 @@ import { toast } from "sonner";
 import { useAppKit } from "@reown/appkit/react";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Link from "next/link";
+import { IconShare } from "@tabler/icons-react";
+import { useGetUserByWallet } from "@/queries";
+import CopyToClipboard from "react-copy-to-clipboard";
+import SocialShareModal from "../task/social-share-modal";
 
 const HeroSection = () => {
   const { address, isConnected } = useAccount();
   const [claimTime, setClaimTime] = useState(null);
   const [isClaimable, setIsClaimable] = useState(false);
   const [isTransactionPending, setIsTransactionPending] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
   const config = useConfig();
+  const { data: userData, isPending: userDataPending } =
+    useGetUserByWallet(address);
+
   const { open } = useAppKit();
   const { writeContractAsync, isPending: writeContractPending } =
     useWriteContract();
@@ -259,6 +267,30 @@ const HeroSection = () => {
               </div>
             </button>
           </Link>
+          <div className="flex flex-row gap-4">
+            <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
+              <input
+                type="text"
+                value={userData?.result?.user?.referralCode}
+                className="w-full outline-0 h-10 "
+              />
+
+              <CopyToClipboard text={userData?.result?.user?.referralCode}>
+                <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
+                  Copy
+                </button>
+              </CopyToClipboard>
+            </div>
+            <button
+              className="flex bg-brand flex-row items-center justify-center gap-4 px-4 rounded-4xl text-black cursor-pointer"
+              onClick={() => {
+                setShareModal(true);
+              }}
+            >
+              <p>Share</p>
+              <IconShare />
+            </button>
+          </div>
           {/* <img
             src="/assets/home/hero.png"
             alt=""
@@ -405,6 +437,12 @@ const HeroSection = () => {
           </BackgroundGradient>
         </div>
       </div>
+      <SocialShareModal
+        open={shareModal}
+        close={() => {
+          setShareModal(false);
+        }}
+      />
     </div>
   );
 };
