@@ -9,7 +9,13 @@ import MarqueeSection from "@/common-components/home/MarqueeSection";
 import NextGenSection from "@/common-components/home/NextGenSection";
 import { TimeLineSection } from "@/common-components/home/TimeLineSection";
 import Tasker from "@/common-components/task";
+import DailyTaskModal from "@/common-components/task/daily-task-modal";
+import { useGetUserByWallet } from "@/queries";
+import { useState } from "react";
+import { useAccount } from "wagmi";
 export default function Home() {
+  const { address } = useAccount();
+
   return (
     <div>
       <div className="flex flex-col gap-44 mx-2 ">
@@ -24,6 +30,7 @@ export default function Home() {
         {/* <MarqueeSection /> */}
       </div>
       <Tasker />
+      <DailyTaskModal open={true} />
     </div>
   );
 }

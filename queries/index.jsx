@@ -48,7 +48,7 @@ export const getUserByWallet = async ({ walletAddress }) => {
 
 export const useSocialTasksUsers = (walletAddress) => {
   return useQuery({
-    queryKey: [walletAddress, "walletAddress"],
+    queryKey: [walletAddress, "socialTasksUsers"],
     queryFn: () => getUserByWallet({ walletAddress }),
     select: (data) => {
       return data?.data;
@@ -84,6 +84,52 @@ export const taskCompleted = async ({
         taskType: taskType,
         socialTasksCompleted: socialTasksCompleted,
         referralTasksCompleted: referralTasksCompleted,
+      },
+    });
+
+    return result;
+  } catch (error) {
+    console.log(error);
+    return error?.response;
+  }
+};
+
+export const useDailyTasksUsers = (walletAddress) => {
+  return useQuery({
+    queryKey: [walletAddress, "dailyTasksUsers"],
+    queryFn: () => dailyTasksUsers({ walletAddress }),
+    select: (data) => {
+      if (data?.data?.responseCode == 200) {
+        return data?.data?.result?.tasks;
+      }
+      return [];
+    },
+    enabled: !!walletAddress,
+  });
+};
+
+export const dailyTasksUsers = async () => {
+  try {
+    const result = await api({
+      url: `/user/dailyTasksUsers`,
+      method: "GET",
+    });
+
+    return result;
+  } catch (error) {
+    console.log(error);
+    return error?.response;
+  }
+};
+
+export const completeDailyTask = async ({ taskId }) => {
+  try {
+    const result = await api({
+      url: "/user/completeDailyTask",
+      method: "POST",
+      data: {
+        taskId: taskId || undefined,
+        isCompleted: true,
       },
     });
 

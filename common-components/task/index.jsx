@@ -48,24 +48,15 @@ const Tasker = () => {
       });
     },
     onSuccess: () => {
-      if (isUserExist?.result?.isUserNew) {
-        setModalState((p) => {
-          return {
-            parentRefModal: false,
-            socialModal: false,
-            shareModal: false,
-            dailyTaskModal: false,
-            socialShareModal: false,
-          };
-        });
-      } else {
-        setModalState((p) => {
-          return {
-            ...p,
-            dailyTaskModal: true,
-          };
-        });
-      }
+      setModalState((p) => {
+        return {
+          parentRefModal: false,
+          socialModal: false,
+          shareModal: false,
+          dailyTaskModal: false,
+          socialShareModal: false,
+        };
+      });
     },
   });
 
@@ -127,21 +118,6 @@ const Tasker = () => {
         dailyTaskModal: false,
         socialShareModal: false,
       });
-      if (!isUserNew) {
-        dailyTaskHandler();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const dailyTaskHandler = () => {
-    try {
-      setModalState({
-        ...modalState,
-        dailyTaskModal: true,
-      });
-      return;
     } catch (error) {
       console.log(error);
     }
@@ -200,9 +176,6 @@ const Tasker = () => {
           }}
           clickHandler={completeReferralTaskMutate}
         />
-      )}
-      {modalState?.dailyTaskModal && (
-        <DailyTaskModal open={modalState.dailyTaskModal} />
       )}
     </div>
   );
