@@ -1,13 +1,24 @@
 "use client";
 import ReferralList from "@/common-components/dashboard/referral-list";
+import SocialShareModal from "@/common-components/task/social-share-modal";
 import { Boxes } from "@/components/ui/background-boxes";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { formatCurrency } from "@/const";
+import { useGetUserByWallet, useReferredUsers } from "@/queries";
 import { IconShare } from "@tabler/icons-react";
 import { Share } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { useAccount } from "wagmi";
 
 const ReferralDashBoard = () => {
+  const { address } = useAccount();
+  const [shareDataModalState, setShareDataModalState] = useState(false);
+  const { data: referredData, isPending: referredDataPending } =
+    useReferredUsers(address);
+  const { data: userData, isPending: userDataPending } =
+    useGetUserByWallet(address);
+
   return (
     <div className="relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg ">
       <div className="absolute inset-0 w-full h-full bg-brand-background z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
@@ -31,14 +42,22 @@ const ReferralDashBoard = () => {
                 <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
                   <input
                     type="text"
-                    value={"nowa_18fd2f13dcc"}
+                    value={userData?.result?.user?.referralCode || ""}
                     className="w-full outline-0 h-10 "
                   />
-                  <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
-                    Copy
-                  </button>
+
+                  <CopyToClipboard text={userData?.result?.user?.referralCode}>
+                    <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
+                      Copy
+                    </button>
+                  </CopyToClipboard>
                 </div>
-                <button className="flex bg-brand flex-row items-center justify-center gap-4 px-4 rounded-4xl text-black cursor-pointer">
+                <button
+                  className="flex bg-brand flex-row items-center justify-center gap-4 px-4 rounded-4xl text-black cursor-pointer"
+                  onClick={() => {
+                    setShareDataModalState(true);
+                  }}
+                >
                   <p>Share</p>
                   <IconShare />
                 </button>
@@ -82,6 +101,14 @@ const ReferralDashBoard = () => {
           </div>
         </BackgroundGradient>
       </div>
+      {shareDataModalState && (
+        <SocialShareModal
+          open={shareDataModalState}
+          close={() => {
+            setShareDataModalState(false);
+          }}
+        />
+      )}
       <ReferralList />
     </div>
   );

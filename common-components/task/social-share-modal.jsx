@@ -13,10 +13,15 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { useGetUserByWallet } from "@/queries";
+import { useAccount } from "wagmi";
 
 const share_url = "http://github.com";
 
 const SocialShareModal = ({ open, close, clickHandler }) => {
+  const { address } = useAccount();
+  const { data: userData, isPending: userDataPending } =
+    useGetUserByWallet(address);
   return (
     <Modal open={open} close={() => {}}>
       <div className="  relative min-w-md flex items-start flex-col gap-6">
@@ -86,10 +91,10 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
         <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
           <input
             type="text"
-            value={"nowa_18fd2f13dcc"}
+            value={userData?.result?.user?.referralCode}
             className="w-full outline-0 h-10 text-brand"
           />
-          <CopyToClipboard text={"nowa_18fd2f13dcc"}>
+          <CopyToClipboard text={userData?.result?.user?.referralCode}>
             <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
               Copy
             </button>

@@ -1,5 +1,3 @@
-// /user/connectWallet
-
 import api from "@/services/api-service";
 import { useQuery } from "@tanstack/react-query";
 
@@ -133,6 +131,33 @@ export const completeDailyTask = async ({ taskId }) => {
       },
     });
 
+    return result;
+  } catch (error) {
+    console.log(error);
+    return error?.response;
+  }
+};
+
+export const useReferredUsers = (walletAddress) => {
+  return useQuery({
+    queryKey: [walletAddress, "referredUsers"],
+    queryFn: () => referredUsers({ walletAddress }),
+    select: (data) => {
+      if (data?.data?.responseCode == 200) {
+        return data?.data?.result;
+      }
+      return {};
+    },
+    enabled: !!walletAddress,
+  });
+};
+
+export const referredUsers = async () => {
+  try {
+    const result = await api({
+      url: `/user/referredUsers`,
+      method: "GET",
+    });
     return result;
   } catch (error) {
     console.log(error);
