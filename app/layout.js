@@ -85,9 +85,7 @@ export default async function RootLayout({ children }) {
           <NavbarStyled />
           {children}
           <Footer />
-
           <Toaster theme="dark" />
-          {/* <Footer /> */}
         </BlockchainProvider>
       </body>
     </html>

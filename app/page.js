@@ -8,6 +8,7 @@ import { MacBookScrollSection } from "@/common-components/home/MacBookScrollSect
 import MarqueeSection from "@/common-components/home/MarqueeSection";
 import NextGenSection from "@/common-components/home/NextGenSection";
 import { TimeLineSection } from "@/common-components/home/TimeLineSection";
+import Tasker from "@/common-components/task";
 export default function Home() {
   return (
     <div>
@@ -22,6 +23,7 @@ export default function Home() {
         <TimeLineSection />
         {/* <MarqueeSection /> */}
       </div>
+      <Tasker />
     </div>
   );
 }
