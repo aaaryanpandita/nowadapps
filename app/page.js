@@ -10,7 +10,7 @@ import NextGenSection from "@/common-components/home/NextGenSection";
 import { TimeLineSection } from "@/common-components/home/TimeLineSection";
 import Tasker from "@/common-components/task";
 import DailyTaskModal from "@/common-components/task/daily-task-modal";
-import { useGetUserByWallet } from "@/queries";
+import { connectWallet, useGetUserByWallet } from "@/queries";
 import { useMutation } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
