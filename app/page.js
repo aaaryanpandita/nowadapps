@@ -12,10 +12,13 @@ import Tasker from "@/common-components/task";
 import DailyTaskModal from "@/common-components/task/daily-task-modal";
 import { useGetUserByWallet } from "@/queries";
 import { useMutation } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 export default function Home() {
   const { address } = useAccount();
+  const searchParams = useSearchParams();
+
   const {
     mutateAsync: connectWalletMutate,
     isPending: connectWalletMutatePending,
