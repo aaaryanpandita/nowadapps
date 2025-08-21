@@ -24,13 +24,13 @@ import { useTimer } from "react-timer-hook";
 import moment from "moment";
 import { waitForTransactionReceipt } from "@wagmi/core";
 import { toast } from "sonner";
-import { useAppKit } from "@reown/appkit/react";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Link from "next/link";
 import { IconShare } from "@tabler/icons-react";
 import { useGetUserByWallet } from "@/queries";
 import CopyToClipboard from "react-copy-to-clipboard";
 import SocialShareModal from "../task/social-share-modal";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 const HeroSection = () => {
   const { address, isConnected } = useAccount();
@@ -42,7 +42,7 @@ const HeroSection = () => {
   const { data: userData, isPending: userDataPending } =
     useGetUserByWallet(address);
 
-  const { open } = useAppKit();
+  const { openConnectModal } = useConnectModal();
   const { writeContractAsync, isPending: writeContractPending } =
     useWriteContract();
   const { data: totalAirdropped, refetch: totalAirdroppedRefetch } =
@@ -383,7 +383,7 @@ const HeroSection = () => {
                   className="bg-brand w-full lg:w-52 text-black py-2 rounded-2xl mt-4 md:mt-0 cursor-pointer"
                   onClick={() => {
                     if (!isConnected) {
-                      open();
+                      openConnectModal();
                       return;
                     }
                     if (isConnected && isClaimable) {

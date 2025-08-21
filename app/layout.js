@@ -8,8 +8,7 @@ import NavbarStyled from "@/common-components/globals/Header";
 import { ReactLenis } from "lenis/react";
 import Footer from "@/common-components/globals/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { QueryProvider } from "@/provider/QueryProvider";
-import BlockChainWrapper from "@/provider/BlockChainWrapper";
+import { BlockchainWrapper } from "@/provider/BlockChainWrapper";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -81,15 +80,13 @@ export default async function RootLayout({ children }) {
         className={`${poppins.variable} antialiased bg-brand-background dark relative`}
       >
         {/* <ReactLenis root /> */}
-        <QueryProvider>
-          <BlockChainWrapper>
-            <GoogleAnalytics gaId="G-EYXKM29811" />
-            <NavbarStyled />
-            {children}
-            <Footer />
-            <Toaster theme="dark" />
-          </BlockChainWrapper>
-        </QueryProvider>
+        <BlockchainWrapper>
+          <GoogleAnalytics gaId="G-EYXKM29811" />
+          <NavbarStyled />
+          {children}
+          <Footer />
+          <Toaster theme="dark" />
+        </BlockchainWrapper>
       </body>
     </html>
   );

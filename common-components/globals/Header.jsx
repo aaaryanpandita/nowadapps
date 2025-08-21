@@ -1,13 +1,13 @@
 "use client";
-import { useAppKit } from "@reown/appkit/react";
+import { ConnectButton, useConnectModal } from "@rainbow-me/rainbowkit";
 import { IconWallet } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
 import { useAccount } from "wagmi";
 
 const NavbarStyled = () => {
-  const { open } = useAppKit();
   const { isConnected } = useAccount();
+  const { openConnectModal } = useConnectModal();
 
   return (
     <div className="absolute top-6 bg-sub-card z-50 w-full ">
@@ -26,12 +26,12 @@ const NavbarStyled = () => {
                 Referral Dashboard
               </p>
             </Link>
-            <appkit-button />
+            <ConnectButton />
           </div>
         ) : (
           <button
             className="bg-brand text-black flex flex-row gap-2 h-12 items-center justify-center w-52 rounded-4xl cursor-pointer"
-            onClick={open}
+            onClick={openConnectModal}
           >
             <IconWallet />
             <p> Connect Wallet</p>

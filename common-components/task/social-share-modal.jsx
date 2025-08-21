@@ -24,7 +24,7 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
 
   const share_url = useMemo(() => {
     let hostname = "";
-    if (window) {
+    if (typeof window !== "undefined") {
       hostname = window.location.href;
     }
 
