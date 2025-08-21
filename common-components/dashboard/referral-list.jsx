@@ -21,6 +21,9 @@ const ReferralList = () => {
       console.log(error);
     }
   };
+  if (referredData?.referredUsers?.length == 0) {
+    return <></>;
+  }
 
   return (
     <div className="container mx-auto relative z-20 w-full mb-20">

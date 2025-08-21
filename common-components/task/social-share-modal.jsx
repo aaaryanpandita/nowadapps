@@ -1,6 +1,6 @@
 "use client";
 import { IconShare, IconX } from "@tabler/icons-react";
-import React from "react";
+import React, { useMemo } from "react";
 import Modal from "../misc/modal";
 import {
   FacebookIcon,
@@ -15,13 +15,22 @@ import {
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useGetUserByWallet } from "@/queries";
 import { useAccount } from "wagmi";
-
-const share_url = "http://github.com";
+import Loader from "../globals/loader";
 
 const SocialShareModal = ({ open, close, clickHandler }) => {
   const { address } = useAccount();
   const { data: userData, isPending: userDataPending } =
     useGetUserByWallet(address);
+
+  const share_url = useMemo(() => {
+    let hostname = "";
+    if (window) {
+      hostname = window.location.href;
+    }
+
+    return `${hostname}${userData?.result?.referralCode}`;
+  }, [userData]);
+
   return (
     <Modal open={open} close={() => {}}>
       <div className="  relative min-w-md flex items-start flex-col gap-6">

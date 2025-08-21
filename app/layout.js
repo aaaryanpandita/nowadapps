@@ -2,13 +2,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import "react-circular-progressbar/dist/styles.css";
-import BlockchainProvider from "@/provider/blockchain-provider";
 import { headers } from "next/headers";
 import { Toaster } from "sonner";
 import NavbarStyled from "@/common-components/globals/Header";
 import { ReactLenis } from "lenis/react";
 import Footer from "@/common-components/globals/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { QueryProvider } from "@/provider/QueryProvider";
+import BlockChainWrapper from "@/provider/BlockChainWrapper";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -79,14 +80,16 @@ export default async function RootLayout({ children }) {
       <body
         className={`${poppins.variable} antialiased bg-brand-background dark relative`}
       >
-        <BlockchainProvider cookies={cookies}>
-          {/* <ReactLenis root /> */}
-          <GoogleAnalytics gaId="G-EYXKM29811" />
-          <NavbarStyled />
-          {children}
-          <Footer />
-          <Toaster theme="dark" />
-        </BlockchainProvider>
+        {/* <ReactLenis root /> */}
+        <QueryProvider>
+          <BlockChainWrapper>
+            <GoogleAnalytics gaId="G-EYXKM29811" />
+            <NavbarStyled />
+            {children}
+            <Footer />
+            <Toaster theme="dark" />
+          </BlockChainWrapper>
+        </QueryProvider>
       </body>
     </html>
   );

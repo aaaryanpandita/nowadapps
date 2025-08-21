@@ -26,7 +26,7 @@ const NavbarStyled = () => {
                 Referral Dashboard
               </p>
             </Link>
-            <appkit-account-button />
+            <appkit-button />
           </div>
         ) : (
           <button
