@@ -6,7 +6,7 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { formatCurrency } from "@/const";
 import { useGetUserByWallet, useReferredUsers } from "@/queries";
 import { IconShare } from "@tabler/icons-react";
-import { Share } from "lucide-react";
+import { Loader2, Share } from "lucide-react";
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useAccount } from "wagmi";
@@ -18,6 +18,14 @@ const ReferralDashBoard = () => {
     useReferredUsers(address);
   const { data: userData, isPending: userDataPending } =
     useGetUserByWallet(address);
+
+  if (referredDataPending | userDataPending) {
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center">
+        <Loader2 />
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg ">
@@ -62,9 +70,8 @@ const ReferralDashBoard = () => {
                   <IconShare />
                 </button>
               </div>
-
               <p>
-                <span> Get 50</span>{" "}
+                <span> Get {referredData?.referralReward || 0}</span>{" "}
                 <img
                   src="/assets/brand/onlyLogo.png"
                   alt=""
@@ -76,14 +83,16 @@ const ReferralDashBoard = () => {
             <div className="w-full grid grid-cols-12  h-[50%] gap-4">
               <div className="col-span-4 bg-card-bg p-8 flex flex-col gap-4 rounded-4xl justify-center">
                 <p>Total Referral</p>
-                <p className="text-4xl font-semibold">5</p>
+                <p className="text-4xl font-semibold">
+                  {referredData?.referredCount || 0}
+                </p>
               </div>
               <div className="col-span-8 bg-card-bg p-8 flex  gap-4 rounded-4xl items-center justify-between flex-row">
                 <div className="flex gap-4 flex-col">
                   <p>My Earning</p>
                   <p className="text-4xl font-semibold">
                     {formatCurrency({
-                      value: 5750,
+                      value: referredData?.totalTokensEarned,
                       symbol: "NOWA",
                     })}
                   </p>

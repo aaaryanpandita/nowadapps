@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Loader from "../globals/loader";
 
-const SocialModal = ({ open, close, setModalState }) => {
+const ReferralModal = ({ open, close, setModalState }) => {
   const [socialStates, setSocialStates] = useState(social);
   const {
     mutateAsync: taskCompletedMutate,
@@ -33,7 +33,7 @@ const SocialModal = ({ open, close, setModalState }) => {
         setModalState((p) => {
           return {
             parentRefModal: false,
-            socialModal: false,
+            referralModal: false,
             shareModal: true,
             dailyTaskModal: false,
             socialShareModal: false,
@@ -110,7 +110,7 @@ const SocialModal = ({ open, close, setModalState }) => {
   );
 };
 
-export default SocialModal;
+export default ReferralModal;
 
 const social = [
   {

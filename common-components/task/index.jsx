@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ParentRefModal from "./parent-modal";
-import SocialModal from "./social-modal";
+import ReferralModal from "./referral-modal";
 import DailyTaskModal from "./daily-task-modal";
 import { useAccount } from "wagmi";
 import { connectWallet, taskCompleted, useGetUserByWallet } from "@/queries";
@@ -51,7 +51,7 @@ const Tasker = () => {
       setModalState((p) => {
         return {
           parentRefModal: false,
-          socialModal: false,
+          referralModal: false,
           shareModal: false,
           dailyTaskModal: false,
           socialShareModal: false,
@@ -62,7 +62,7 @@ const Tasker = () => {
 
   const [modalState, setModalState] = useState({
     parentRefModal: false,
-    socialModal: false,
+    referralModal: false,
     shareModal: false,
     dailyTaskModal: false,
     socialShareModal: false,
@@ -99,7 +99,7 @@ const Tasker = () => {
       if (!socialTasksCompleted) {
         setModalState({
           ...modalState,
-          socialModal: true,
+          referralModal: true,
         });
         return;
       }
@@ -113,7 +113,7 @@ const Tasker = () => {
 
       setModalState({
         parentRefModal: false,
-        socialModal: false,
+        referralModal: false,
         shareModal: false,
         dailyTaskModal: false,
         socialShareModal: false,
@@ -129,7 +129,7 @@ const Tasker = () => {
       setModalState({
         ...modalState,
         parentRefModal: false,
-        socialModal: true,
+        referralModal: true,
       });
     } catch (error) {
       console.log(error);
@@ -154,9 +154,9 @@ const Tasker = () => {
           close={parentRefCloseHandler}
         />
       )}
-      {modalState?.socialModal && (
-        <SocialModal
-          open={modalState.socialModal}
+      {modalState?.referralModal && (
+        <ReferralModal
+          open={modalState.referralModal}
           setModalState={setModalState}
         />
       )}
