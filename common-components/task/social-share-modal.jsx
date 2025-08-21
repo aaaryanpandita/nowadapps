@@ -25,10 +25,11 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
   const share_url = useMemo(() => {
     let hostname = "";
     if (typeof window !== "undefined") {
-      hostname = window.location.href;
+      const url = new URL(window.location.href);
+      hostname = `${url.protocol}//${url.host}`;
     }
 
-    return `${hostname}${userData?.result?.referralCode}`;
+    return `${hostname}?parent_ref_code=${userData?.result?.user?.referralCode}`;
   }, [userData]);
 
   return (
@@ -100,10 +101,10 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
         <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
           <input
             type="text"
-            value={userData?.result?.user?.referralCode}
+            value={share_url}
             className="w-full outline-0 h-10 text-brand"
           />
-          <CopyToClipboard text={userData?.result?.user?.referralCode}>
+          <CopyToClipboard text={share_url}>
             <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
               Copy
             </button>

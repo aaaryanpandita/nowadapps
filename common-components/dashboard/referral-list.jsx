@@ -1,18 +1,29 @@
 "use client";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { formatCurrency } from "@/const";
-import { useReferredUsers } from "@/queries";
-import React, { useState } from "react";
+import { useGetUserByWallet, useReferredUsers } from "@/queries";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useAccount } from "wagmi";
 import Loader from "../globals/loader";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const ReferralList = () => {
   const { address } = useAccount();
   const [currentPage, setCurrentPage] = useState(1);
   const { data: referredData, isPending: referredDataPending } =
     useReferredUsers(address, currentPage);
+  const { data: userData, isPending: userDataPending } =
+    useGetUserByWallet(address);
+  const router = useRouter();
+
+  useEffect(() => {
+    // userData?.result?.isUserExist
+    if (!userData?.result?.isUserExist) {
+      router.replace("/");
+    }
+  }, [userData]);
 
   const handlePageChange = (page) => {
     try {
@@ -21,6 +32,7 @@ const ReferralList = () => {
       console.log(error);
     }
   };
+
   if (referredData?.referredUsers?.length == 0) {
     return <></>;
   }
