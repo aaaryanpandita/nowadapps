@@ -208,7 +208,7 @@ const SocialTask = ({ userDataRefetch }) => {
                     />
                   </div>
                   <Link
-                    href={social.TELEGRAM}
+                    href={social.INSTAGRAM}
                     target="_blank"
                     onClick={() => {
                       setSocialCheck((p) => {
@@ -279,7 +279,7 @@ const SocialTask = ({ userDataRefetch }) => {
                   />
                 </div>
                 <button
-                  className="bg-brand flex flex-row h-10 w-full text-black items-center justify-center relative rounded-2xl"
+                  className="bg-brand flex flex-row h-10 w-full text-black items-center justify-center relative rounded-2xl cursor-pointer"
                   onClick={() => {
                     if (updateUserMutatePending) {
                       return;

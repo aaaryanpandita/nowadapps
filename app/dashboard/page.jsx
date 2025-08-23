@@ -78,7 +78,7 @@ const ReferralDashBoard = () => {
                   alt=""
                   className="object-contain h-4 inline"
                 />{" "}
-                <span> for each invite user</span>
+                <span> for each invited user</span>
               </p>
             </div>
             <div className="w-full grid grid-cols-12  h-[50%] gap-4">
@@ -99,7 +99,7 @@ const ReferralDashBoard = () => {
                   </p>
                 </div>
                 <div className=" flex flex-col items-center justify-center gap-4">
-                  <button className="bg-brand text-black w-56 h-10 rounded-4xl cursor-pointer">
+                  <button className="bg-brand/40 text-black w-56 h-10 rounded-4xl cursor-pointer">
                     Claim Reward
                   </button>
                   <p className="text-xs">

@@ -8,6 +8,7 @@ import { useAccount } from "wagmi";
 import Loader from "../globals/loader";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { maskValue } from "@/utils";
 
 const ReferralList = () => {
   const { address } = useAccount();
@@ -66,7 +67,9 @@ const ReferralList = () => {
                       >
                         {(currentPage - 1) * 10 + idx + 1}
                       </th>
-                      <td className="px-6 py-4">{item?.walletAddress}</td>
+                      <td className="px-6 py-4">
+                        {maskValue(item?.walletAddress)}
+                      </td>
                       <td className="px-6 py-4">{item?.createdAt}</td>
                       <td className="px-6 py-4">
                         {formatCurrency({
@@ -98,7 +101,7 @@ const ReferralList = () => {
               onPageChange={handlePageChange}
               containerClassName={"flex gap-2"}
               pageClassName={"px-3 py-1 border rounded cursor-pointer"}
-              activeClassName={"bg-blue-500 text-white"}
+              activeClassName={"bg-brand text-white"}
               previousClassName={"px-3 py-1 border rounded cursor-pointer"}
               nextClassName={"px-3 py-1 border rounded cursor-pointer"}
               forcePage={currentPage - 1}

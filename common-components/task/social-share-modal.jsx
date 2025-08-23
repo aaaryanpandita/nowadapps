@@ -15,6 +15,7 @@ import {
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useAccount } from "wagmi";
 import { useConnectWallet } from "@/queries";
+import { toast } from "sonner";
 
 const SocialShareModal = ({ open, close, clickHandler }) => {
   const { address } = useAccount();
@@ -104,7 +105,12 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
             value={share_url}
             className="w-full outline-0 h-10 text-brand"
           />
-          <CopyToClipboard text={share_url}>
+          <CopyToClipboard
+            text={share_url}
+            onCopy={() => {
+              toast.success("Copied successfully.");
+            }}
+          >
             <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
               Copy
             </button>

@@ -12,6 +12,7 @@ import { useAccount } from "wagmi";
 import SocialTask from "../task/social-task";
 import { useConnectWallet, useDailyTasksUsers } from "@/queries";
 import DailyTask from "../task/daily-task";
+import { toast } from "sonner";
 
 const HeroSection = () => {
   const { isConnected, address } = useAccount();
@@ -84,7 +85,12 @@ const HeroSection = () => {
                   className="w-full outline-0 h-10 "
                 />
 
-                <CopyToClipboard text={userData?.referralCode}>
+                <CopyToClipboard
+                  text={userData?.referralCode}
+                  onCopy={() => {
+                    toast.success("Copied successfully.");
+                  }}
+                >
                   <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
                     Copy
                   </button>

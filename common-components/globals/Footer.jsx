@@ -28,6 +28,7 @@
 //                 {section.title}
 //               </h4>
 
+import { social } from "@/const";
 import {
   IconBrandInstagram,
   IconBrandTelegram,
@@ -247,7 +248,7 @@ const Footer = () => {
               <Link
                 className="flex flex-row gap-2 "
                 target="_blank"
-                href={"https://t.me/nowatoken"}
+                href={social.TELEGRAM}
               >
                 <IconBrandTelegram color="rgb(0, 255, 169)" />
                 <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
@@ -257,7 +258,7 @@ const Footer = () => {
               <Link
                 className="flex flex-row gap-2"
                 target="_blank"
-                href={"https://www.instagram.com/nowatoken/"}
+                href={social.TWITTER}
               >
                 <IconBrandTwitter color="rgb(0, 255, 169)" />
                 <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
@@ -267,7 +268,7 @@ const Footer = () => {
               <Link
                 className="flex flex-row gap-2"
                 target="_blank"
-                href={"https://www.instagram.com/nowatoken/"}
+                href={social.INSTAGRAM}
               >
                 <IconBrandInstagram color="rgb(0, 255, 169)" />
                 <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
