@@ -9,6 +9,7 @@ import { IconShare } from "@tabler/icons-react";
 import { Loader2, Share } from "lucide-react";
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { toast } from "sonner";
 import { useAccount } from "wagmi";
 
 const ReferralDashBoard = () => {
@@ -55,7 +56,12 @@ const ReferralDashBoard = () => {
                     className="w-full outline-0 h-10 "
                   />
 
-                  <CopyToClipboard text={userData?.referralCode}>
+                  <CopyToClipboard
+                    text={userData?.referralCode}
+                    onCopy={() => {
+                      toast.success("Copied Successfully");
+                    }}
+                  >
                     <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
                       Copy
                     </button>
