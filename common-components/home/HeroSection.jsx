@@ -10,7 +10,11 @@ import SocialShareModal from "../task/social-share-modal";
 import StakeClaim from "../task/stake-claim";
 import { useAccount } from "wagmi";
 import SocialTask from "../task/social-task";
-import { useConnectWallet, useDailyTasksUsers } from "@/queries";
+import {
+  useConnectWallet,
+  useDailyTasksUsers,
+  useReferredUsers,
+} from "@/queries";
 import DailyTask from "../task/daily-task";
 import { toast } from "sonner";
 
@@ -32,6 +36,8 @@ const HeroSection = () => {
   } = useDailyTasksUsers({
     walletAddress: address,
   });
+  const { data: referredData, isPending: referredDataPending } =
+    useReferredUsers(address, 1);
 
   const cardToShow = useMemo(() => {
     if (!userData?.referralTasksCompleted && !userData?.socialTasksCompleted) {
@@ -77,34 +83,46 @@ const HeroSection = () => {
             </button>
           </Link>
           {isConnected && (
-            <div className="flex flex-row gap-4">
-              <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
-                <input
-                  type="text"
-                  value={userData?.referralCode}
-                  className="w-full outline-0 h-10 "
-                />
+            <div className="flex flex-col gap-3">
+              <p>Your Referral Code</p>
+              <div className="flex flex-row gap-4">
+                <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
+                  <input
+                    type="text"
+                    value={userData?.referralCode}
+                    className="w-full outline-0 h-10 "
+                  />
 
-                <CopyToClipboard
-                  text={userData?.referralCode}
-                  onCopy={() => {
-                    toast.success("Copied successfully.");
+                  <CopyToClipboard
+                    text={userData?.referralCode}
+                    onCopy={() => {
+                      toast.success("Copied successfully.");
+                    }}
+                  >
+                    <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
+                      Copy
+                    </button>
+                  </CopyToClipboard>
+                </div>
+                <button
+                  className="flex bg-brand flex-row items-center justify-center gap-4 px-4 rounded-4xl text-black cursor-pointer"
+                  onClick={() => {
+                    setShareModal(true);
                   }}
                 >
-                  <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
-                    Copy
-                  </button>
-                </CopyToClipboard>
+                  <p>Share</p>
+                  <IconShare />
+                </button>
               </div>
-              <button
-                className="flex bg-brand flex-row items-center justify-center gap-4 px-4 rounded-4xl text-black cursor-pointer"
-                onClick={() => {
-                  setShareModal(true);
-                }}
-              >
-                <p>Share</p>
-                <IconShare />
-              </button>
+              <p>
+                <span> Get {referredData?.referralReward || 0}</span>{" "}
+                <img
+                  src="/assets/brand/onlyLogo.png"
+                  alt=""
+                  className="object-contain h-4 inline"
+                />{" "}
+                <span> for each invited user</span>
+              </p>
             </div>
           )}
         </div>

@@ -46,7 +46,7 @@ const ReferralDashBoard = () => {
           </div>
           <div className="col-span-8">
             <div className="w-full flex flex-col gap-4 h-[50%]">
-              <p>Your Referral Link</p>
+              <p>Your Referral Code</p>
               <div className="flex flex-row gap-4">
                 <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
                   <input
