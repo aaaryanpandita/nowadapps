@@ -90,7 +90,7 @@ const ReferralDashBoard = () => {
               </div>
               <div className="col-span-12 lg:col-span-8 bg-card-bg p-8 flex  gap-4 rounded-4xl items-center justify-between flex-col lg:flex-row">
                 <div className="flex gap-4 flex-col">
-                  <p>My Earning</p>
+                  <p>My Referral Earning</p>
                   <p className="text-4xl font-semibold">
                     {formatCurrency({
                       value: referredData?.totalTokensEarned,

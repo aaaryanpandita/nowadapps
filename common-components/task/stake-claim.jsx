@@ -278,7 +278,7 @@ const StakeClaim = () => {
             </div>
             <div className="flex flex-row justify-between w-full">
               <div className="flex flex-row gap-2 items-center">
-                <div className="h-3 w-3 rounded-full bg-card" />
+                <div className="h-3 w-3 rounded-full bg-card border" />
                 <p>Left to Claim</p>
               </div>
               <p>
