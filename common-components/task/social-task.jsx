@@ -149,7 +149,7 @@ const SocialTask = ({ userDataRefetch }) => {
                       }, 3000);
                     }}
                   >
-                    <button className="bg-brand h-12 text-black w-32 rounded-2xl cursor-pointer">
+                    <button className="bg-brand h-12 text-black px-4 lg:w-32 text-sm md:text-md rounded-2xl cursor-pointer">
                       {socialCheck?.twitter ? `Followed` : `Follow`}
                     </button>
                   </Link>
@@ -184,7 +184,7 @@ const SocialTask = ({ userDataRefetch }) => {
                       }, 3000);
                     }}
                   >
-                    <button className="bg-brand h-12 text-black w-32 rounded-2xl cursor-pointer">
+                    <button className="bg-brand h-12 text-black px-4 lg:w-32 text-sm md:text-md rounded-2xl cursor-pointer">
                       {socialCheck?.telegram ? `Joined` : `Join`}
                     </button>
                   </Link>
@@ -217,7 +217,7 @@ const SocialTask = ({ userDataRefetch }) => {
                       });
                     }}
                   >
-                    <button className="bg-brand h-12 text-black w-32 rounded-2xl cursor-pointer">
+                    <button className="bg-brand h-12 text-black px-4 lg:w-32 text-sm md:text-md rounded-2xl cursor-pointer">
                       {socialCheck?.instagram ? `Followed` : `Follow`}
                     </button>
                   </Link>

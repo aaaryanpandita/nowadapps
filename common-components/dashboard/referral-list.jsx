@@ -40,7 +40,7 @@ const ReferralList = () => {
             </div>
           )}
           {!referredDataPending && (
-            <table className="w-full text-sm text-left rtl:text-right ">
+            <table className="w-full text-sm text-left rtl:text-right min-w-[600px]">
               <thead className="text-xs uppercase bg-transparent ">
                 <tr>
                   <th scope="col" className="px-6 py-3">

@@ -36,16 +36,16 @@ const ReferralDashBoard = () => {
         <div className="mt-20 mb-10 flex w-full items-center justify-center">
           <p className="text-4xl font-semibold">Referral Dashboard</p>
         </div>
-        <BackgroundGradient className=" grid grid-cols-12 h-full w-full bg-[#121313] gap-4 p-6 shadow-[0px_0px_7.6px_7px_rgba(100,231,158,0.25)] rounded-2xl">
-          <div className="col-span-4 flex justify-center items-center">
+        <BackgroundGradient className="grid grid-cols-12  w-full bg-[#121313] gap-4 p-6 shadow-[0px_0px_7.6px_7px_rgba(100,231,158,0.25)] rounded-2xl">
+          <div className="col-span-12 lg:col-span-4 flex justify-center items-center">
             <img
               src="/assets/brand/onlyLogo.png"
               alt=""
-              className="object-contain h-96 w-60"
+              className="object-contain h-32 lg:h-96 w-60"
             />
           </div>
-          <div className="col-span-8">
-            <div className="w-full flex flex-col gap-4 h-[50%]">
+          <div className="col-span-12 lg:col-span-8">
+            <div className="w-full flex flex-col gap-4 lg:h-[50%]">
               <p>Your Referral Code</p>
               <div className="flex flex-row gap-4">
                 <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
@@ -81,14 +81,14 @@ const ReferralDashBoard = () => {
                 <span> for each invited user</span>
               </p>
             </div>
-            <div className="w-full grid grid-cols-12  h-[50%] gap-4">
-              <div className="col-span-4 bg-card-bg p-8 flex flex-col gap-4 rounded-4xl justify-center">
+            <div className="w-full grid grid-cols-12  lg:h-[50%] gap-4 mt-4 lg:mt-0">
+              <div className="col-span-12 lg:col-span-4 bg-card-bg p-8 flex flex-col gap-4 rounded-4xl justify-center">
                 <p>Total Referral</p>
                 <p className="text-4xl font-semibold">
                   {referredData?.referredCount || 0}
                 </p>
               </div>
-              <div className="col-span-8 bg-card-bg p-8 flex  gap-4 rounded-4xl items-center justify-between flex-row">
+              <div className="col-span-12 lg:col-span-8 bg-card-bg p-8 flex  gap-4 rounded-4xl items-center justify-between flex-col lg:flex-row">
                 <div className="flex gap-4 flex-col">
                   <p>My Earning</p>
                   <p className="text-4xl font-semibold">
