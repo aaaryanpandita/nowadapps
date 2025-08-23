@@ -294,7 +294,7 @@ const StakeClaim = () => {
 
         <div className="col-span-12 md:col-span-7 row-span-3 bg-card-bg p-6 flex flex-col gap-4 rounded-2xl">
           <p>Annual Percentage Yield</p>
-          <p className="text-3xl font-semibold">{formattedDetail?.apy}%</p>
+          <p className="text-3xl font-semibold">{formattedDetail?.apy || 0}%</p>
         </div>
         <div className="col-span-12 md:col-span-7 row-span-3 bg-card-bg p-6 flex flex-col gap-4 rounded-2xl">
           <p>My Staked Amount</p>

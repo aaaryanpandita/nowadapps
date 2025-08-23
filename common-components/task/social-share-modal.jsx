@@ -33,6 +33,13 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
     return `${hostname}?parent_ref_code=${userData?.referralCode}`;
   }, [userData]);
 
+  const shareableContent = useMemo(() => {
+    return `I’m already earning rewards on Nowa – and you can too!
+Join using my referral code and start claiming & staking NOWA tokens today.
+On every successful referral, you’ll receive rewards!
+Referral Code: ${userData?.referralCode}`;
+  }, [userData]);
+
   return (
     <Modal open={open} close={() => {}}>
       <div className="relative min-w-full lg:min-w-md flex items-start flex-col gap-6">
@@ -51,8 +58,9 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
         <div className="w-full h-[1px] bg-gray-400" />
         <div className="flex flex-row justify-between w-full">
           <WhatsappShareButton
-            url={share_url}
+            url={shareableContent}
             className="flex items-center flex-col"
+            // content={shareableContent}
             onClick={() => {
               if (clickHandler) {
                 clickHandler();
@@ -63,7 +71,7 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
             <p className="hidden sm:block">Whatsapp</p>
           </WhatsappShareButton>
           <TelegramShareButton
-            url={share_url}
+            url={shareableContent}
             className="flex items-center flex-col"
             onClick={() => {
               if (clickHandler) {
@@ -75,7 +83,7 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
             <p className="hidden sm:block">Telegram</p>
           </TelegramShareButton>
           <TwitterShareButton
-            url={share_url}
+            url={shareableContent}
             className="flex items-center flex-col"
             onClick={() => {
               if (clickHandler) {
@@ -87,7 +95,7 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
             <p className="hidden sm:block">Twitter</p>
           </TwitterShareButton>
           <FacebookShareButton
-            url={share_url}
+            url={shareableContent}
             className="flex items-center flex-col"
             onClick={() => {
               if (clickHandler) {
