@@ -1,14 +1,28 @@
 import api from "@/services/api-service";
 import { useQuery } from "@tanstack/react-query";
 
-export const connectWallet = async ({ walletAddress, parentReferralCode }) => {
+export const useConnectWallet = ({ walletAddress }) => {
+  return useQuery({
+    queryKey: [walletAddress, "connectWallet"],
+    queryFn: () => connectWallet({ walletAddress }),
+    select: (data) => {
+      if (data?.data?.responseCode == 200) {
+        return data?.data?.result?.user;
+      }
+
+      return {};
+    },
+    enabled: !!walletAddress,
+  });
+};
+
+export const connectWallet = async ({ walletAddress }) => {
   try {
     const result = await api({
       url: "/user/connectWallet",
       method: "POST",
       data: {
         walletAddress: walletAddress || undefined,
-        parentReferralCode: parentReferralCode || undefined,
       },
     });
 
@@ -19,69 +33,27 @@ export const connectWallet = async ({ walletAddress, parentReferralCode }) => {
   }
 };
 
-export const useGetUserByWallet = (walletAddress) => {
-  return useQuery({
-    queryKey: [walletAddress, "walletAddress"],
-    queryFn: () => getUserByWallet({ walletAddress }),
-    select: (data) => {
-      return data?.data;
-    },
-    enabled: !!walletAddress,
-  });
-};
-
-export const getUserByWallet = async ({ walletAddress }) => {
-  try {
-    const result = await api({
-      url: `/user/getUserByWallet/${walletAddress}`,
-      method: "GET",
-    });
-
-    return result;
-  } catch (error) {
-    console.log(error);
-    return error?.response;
-  }
-};
-
-export const useSocialTasksUsers = (walletAddress) => {
-  return useQuery({
-    queryKey: [walletAddress, "socialTasksUsers"],
-    queryFn: () => getUserByWallet({ walletAddress }),
-    select: (data) => {
-      return data?.data;
-    },
-    enabled: !!walletAddress,
-  });
-};
-
-export const socialTasksUsers = async () => {
-  try {
-    const result = await api({
-      url: `/user/socialTasksUsers`,
-      method: "GET",
-    });
-
-    return result;
-  } catch (error) {
-    console.log(error);
-    return error?.response;
-  }
-};
-
-export const taskCompleted = async ({
-  taskType,
+export const updateUserDetails = async ({
+  xUsername,
+  instagramUsername,
+  telegramUsername,
   socialTasksCompleted,
   referralTasksCompleted,
+  captchaValue,
+  walletAddress,
 }) => {
   try {
     const result = await api({
-      url: "/user/taskCompleted",
+      url: "/user/updateUserDetails",
       method: "POST",
       data: {
-        taskType: taskType,
-        socialTasksCompleted: socialTasksCompleted,
-        referralTasksCompleted: referralTasksCompleted,
+        xUsername,
+        instagramUsername,
+        telegramUsername,
+        socialTasksCompleted,
+        referralTasksCompleted,
+        captchaValue,
+        walletAddress,
       },
     });
 
@@ -92,42 +64,28 @@ export const taskCompleted = async ({
   }
 };
 
-export const useDailyTasksUsers = (walletAddress) => {
+export const useDailyTasksUsers = ({ walletAddress }) => {
   return useQuery({
     queryKey: [walletAddress, "dailyTasksUsers"],
     queryFn: () => dailyTasksUsers({ walletAddress }),
     select: (data) => {
       if (data?.data?.responseCode == 200) {
-        return data?.data?.result?.tasks;
+        return data?.data?.result;
       }
-      return [];
+
+      return {};
     },
     enabled: !!walletAddress,
   });
 };
 
-export const dailyTasksUsers = async () => {
+export const dailyTasksUsers = async ({ walletAddress }) => {
   try {
     const result = await api({
       url: `/user/dailyTasksUsers`,
       method: "GET",
-    });
-
-    return result;
-  } catch (error) {
-    console.log(error);
-    return error?.response;
-  }
-};
-
-export const completeDailyTask = async ({ taskId }) => {
-  try {
-    const result = await api({
-      url: "/user/completeDailyTask",
-      method: "POST",
-      data: {
-        taskId: taskId || undefined,
-        isCompleted: true,
+      params: {
+        walletAddress,
       },
     });
 
@@ -160,6 +118,28 @@ export const referredUsers = async ({ currentPage }) => {
       params: {
         page: currentPage,
         limit: 10,
+      },
+    });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return error?.response;
+  }
+};
+
+export const completeDailyTask = async ({
+  taskId,
+  isCompleted,
+  walletAddress,
+}) => {
+  try {
+    const result = await api({
+      url: `/user/completeDailyTask`,
+      method: "POST",
+      data: {
+        taskId,
+        isCompleted,
+        walletAddress,
       },
     });
     return result;

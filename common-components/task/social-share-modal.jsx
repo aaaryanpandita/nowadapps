@@ -13,14 +13,15 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { useGetUserByWallet } from "@/queries";
 import { useAccount } from "wagmi";
 import Loader from "../globals/loader";
+import { useConnectWallet } from "@/queries";
 
 const SocialShareModal = ({ open, close, clickHandler }) => {
   const { address } = useAccount();
-  const { data: userData, isPending: userDataPending } =
-    useGetUserByWallet(address);
+  const { data: userData, isLoading: userDataLoading } = useConnectWallet({
+    walletAddress: address,
+  });
 
   const share_url = useMemo(() => {
     let hostname = "";
@@ -29,7 +30,7 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
       hostname = `${url.protocol}//${url.host}`;
     }
 
-    return `${hostname}?parent_ref_code=${userData?.result?.user?.referralCode}`;
+    return `${hostname}?parent_ref_code=${userData?.referralCode}`;
   }, [userData]);
 
   return (

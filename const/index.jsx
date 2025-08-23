@@ -2,6 +2,12 @@ import { formatNice } from "coin-format";
 import airDropAbi from "@/abi/air-drop.json";
 import stakingAbi from "@/abi/staking.json";
 
+export const social = {
+  TWITTER: "https://x.com/Nowatoken",
+  INSTAGRAM: "https://www.instagram.com/nowatoken",
+  TELEGRAM: "https://t.me/nowatoken",
+};
+
 export const STAKING_CONTRACT_ADDRESS =
   "0xD87a7c492597de7Fa36932250aC90331Da3Eb747";
 export const AIRDROP_CONTRACT_ADDRESS =
@@ -18,8 +24,6 @@ export const abi = {
 export const formatCurrency = ({ value, symbol }) => {
   return `${formatNice(value)} ${symbol ? symbol : ""}`;
 };
-
-export const base_url = "";
 
 export const appConfigurationsMainNet = [
   {
@@ -64,3 +68,5 @@ export const ChainConfig = appConfigurationsMainNet.map((config) => ({
     },
   },
 }));
+
+export const SECRET_KEY_STAGE = "6LdKgq0rAAAAAFpJFpyhIg4jJnRflFdMiDfdhOqO";
