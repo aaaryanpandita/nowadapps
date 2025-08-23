@@ -69,4 +69,4 @@ export const ChainConfig = appConfigurationsMainNet.map((config) => ({
   },
 }));
 
-export const SECRET_KEY_STAGE = "6Lfvma8rAAAAAHNtNJ9JrBoBiqQhHGybXKX7Pf_E";
+export const SECRET_KEY_STAGE = "6Ldlmq8rAAAAAEFa7md4DCfgZCrU9dhCC-R1q6Bw";
