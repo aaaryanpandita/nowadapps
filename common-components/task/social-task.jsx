@@ -27,7 +27,7 @@ const validationSchema = Yup.object({
   twitter: Yup.string().required("X id is required."),
   telegram: Yup.string().required("Telegram id is required."),
   instagram: Yup.string().required("Instagram id is required."),
-  referralCode: Yup.string().optional(),
+  // referralCode: Yup.string().optional(),
   token: Yup.string().required("Captcha is required."),
 });
 
@@ -68,14 +68,14 @@ const SocialTask = ({ userDataRefetch }) => {
     useMutation({
       mutationFn: () => {
         return updateUserDetails({
-          captchaValue: formik?.values?.token,
-          instagramUsername: formik?.values?.instagram,
-          telegramUsername: formik?.values?.telegram,
-          xUsername: formik?.values?.twitter,
+          captchaValue: formik?.values?.token || undefined,
+          instagramUsername: formik?.values?.instagram || undefined,
+          telegramUsername: formik?.values?.telegram || undefined,
+          xUsername: formik?.values?.twitter || undefined,
           referralTasksCompleted: true,
           socialTasksCompleted: true,
-          walletAddress: address,
-          parentReferralCode: formik?.values?.referralCode,
+          walletAddress: address || undefined,
+          parentReferralCode: formik?.values?.referralCode || undefined,
         });
       },
       onSuccess: (data) => {
