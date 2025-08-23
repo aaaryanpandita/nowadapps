@@ -74,6 +74,7 @@ const SocialTask = ({ userDataRefetch }) => {
           referralTasksCompleted: true,
           socialTasksCompleted: true,
           walletAddress: address,
+          parentReferralCode: formik?.values?.referralCode,
         });
       },
       onSuccess: (data) => {

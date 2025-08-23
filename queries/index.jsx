@@ -41,6 +41,7 @@ export const updateUserDetails = async ({
   referralTasksCompleted,
   captchaValue,
   walletAddress,
+  parentReferralCode,
 }) => {
   try {
     const result = await api({
@@ -54,6 +55,7 @@ export const updateUserDetails = async ({
         referralTasksCompleted,
         captchaValue,
         walletAddress,
+        parentReferralCode,
       },
     });
 
