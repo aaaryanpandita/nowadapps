@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const ChartSection = () => {
   return (
     <Container>
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto  px-4 md:px-8 lg:px-10">
         <h2 className="text-4xl font-semibold mb-4 text-black dark:text-white ">
           Powering the <span className="text-brand">Future</span> of Our
           Ecosystem

@@ -11,11 +11,11 @@ import { TimeLineSection } from "@/common-components/home/TimeLineSection";
 export default function Home() {
   return (
     <div>
-      <div className="flex flex-col gap-44 mx-2 ">
+      <div className="flex flex-col gap-32 mx-2 ">
         <HeroSection />
       </div>
       <MacBookScrollSection />
-      <div className="flex flex-col gap-44 mx-2 mb-28">
+      <div className="flex flex-col gap-32 mx-2 mb-28">
         <AboutSection />
         <NextGenSection />
         <ChartSection />
