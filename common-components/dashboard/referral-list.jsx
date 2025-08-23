@@ -101,7 +101,7 @@ const ReferralList = () => {
               onPageChange={handlePageChange}
               containerClassName={"flex gap-2"}
               pageClassName={"px-3 py-1 border rounded cursor-pointer"}
-              activeClassName={"bg-brand text-white"}
+              activeClassName={"bg-brand/50 text-white"}
               previousClassName={"px-3 py-1 border rounded cursor-pointer"}
               nextClassName={"px-3 py-1 border rounded cursor-pointer"}
               forcePage={currentPage - 1}

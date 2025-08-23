@@ -1,7 +1,9 @@
 "use client";
 import { ConnectButton, useConnectModal } from "@rainbow-me/rainbowkit";
 import { IconWallet, IconMenu2, IconX } from "@tabler/icons-react";
+import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { useAccount } from "wagmi";
 
@@ -9,6 +11,7 @@ const NavbarStyled = () => {
   const { isConnected } = useAccount();
   const { openConnectModal } = useConnectModal();
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="absolute top-6 bg-sub-card z-50 w-full">
@@ -27,7 +30,13 @@ const NavbarStyled = () => {
           {isConnected ? (
             <>
               <Link href={"/dashboard"}>
-                <p className="cursor-pointer hover:underline">
+                <p
+                  className={clsx(
+                    "cursor-pointer hover:underline",
+                    pathname?.includes("/dashboard") &&
+                      "text-brand font-semibold"
+                  )}
+                >
                   Referral Dashboard
                 </p>
               </Link>
@@ -64,7 +73,10 @@ const NavbarStyled = () => {
                 <Link
                   href={"/dashboard"}
                   onClick={() => setMenuOpen(false)}
-                  className="hover:underline"
+                  className={clsx(
+                    "hover:underline",
+                    pathname?.includes("/dashboard") && "text-brand"
+                  )}
                 >
                   Referral Dashboard
                 </Link>

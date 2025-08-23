@@ -21,12 +21,13 @@ import { toast } from "sonner";
 import Link from "next/link";
 import SocialShareModal from "./social-share-modal";
 import { useSearchParams } from "next/navigation";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const validationSchema = Yup.object({
-  twitter: Yup.string().required("Twitter id is required."),
+  twitter: Yup.string().required("X id is required."),
   telegram: Yup.string().required("Telegram id is required."),
   instagram: Yup.string().required("Instagram id is required."),
-  referralCode: Yup.string(),
+  referralCode: Yup.string().optional(),
   token: Yup.string().required("Captcha is required."),
 });
 
@@ -254,7 +255,14 @@ const SocialTask = ({ userDataRefetch }) => {
                     <p>Share any 3 friends</p>
                     <div className="bg-[#64E79E33] rounded-lg  flex items-center justify-center px-2 py-1 gap-2 ">
                       <p>{userData?.referralCode || ""}</p>
-                      <IconCopy className="cursor-pointer" />
+                      <CopyToClipboard
+                        text={userData?.referralCode || ""}
+                        onCopy={() => {
+                          toast.success("Copied Successfully.");
+                        }}
+                      >
+                        <IconCopy className="cursor-pointer" />
+                      </CopyToClipboard>
                     </div>
                   </div>
                 </div>
