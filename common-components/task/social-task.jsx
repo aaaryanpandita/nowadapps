@@ -272,7 +272,9 @@ const SocialTask = ({ userDataRefetch }) => {
                     setShareModalState(true);
                   }}
                 >
-                  Share
+                  {`Share${socialCheck.share_number ? ":" : " "} ${
+                    socialCheck.share_number || ""
+                  }`}
                 </button>
               </div>
               {/* //Referral/// */}
