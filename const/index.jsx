@@ -22,7 +22,7 @@ export const abi = {
 };
 
 export const formatCurrency = ({ value, symbol }) => {
-  return `${formatNice(value)} ${symbol ? symbol : ""}`;
+  return `${formatNice(value || "0")} ${symbol ? symbol : ""}`;
 };
 
 export const appConfigurationsMainNet = [
@@ -69,4 +69,4 @@ export const ChainConfig = appConfigurationsMainNet.map((config) => ({
   },
 }));
 
-export const SECRET_KEY_STAGE = "6LdKgq0rAAAAAFpJFpyhIg4jJnRflFdMiDfdhOqO";
+export const SECRET_KEY_STAGE = "6LfKd68rAAAAABsVgLXqR1R8k5zq4Am4qHVBxPrU";

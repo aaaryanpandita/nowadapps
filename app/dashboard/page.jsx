@@ -4,7 +4,7 @@ import SocialShareModal from "@/common-components/task/social-share-modal";
 import { Boxes } from "@/components/ui/background-boxes";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { formatCurrency } from "@/const";
-import { useGetUserByWallet, useReferredUsers } from "@/queries";
+import { useConnectWallet, useReferredUsers } from "@/queries";
 import { IconShare } from "@tabler/icons-react";
 import { Loader2, Share } from "lucide-react";
 import React, { useState } from "react";
@@ -15,9 +15,10 @@ const ReferralDashBoard = () => {
   const { address } = useAccount();
   const [shareDataModalState, setShareDataModalState] = useState(false);
   const { data: referredData, isPending: referredDataPending } =
-    useReferredUsers(address);
-  const { data: userData, isPending: userDataPending } =
-    useGetUserByWallet(address);
+    useReferredUsers(address, 1);
+  const { data: userData, isPending: userDataPending } = useConnectWallet({
+    walletAddress: address,
+  });
 
   if (referredDataPending | userDataPending) {
     return (
@@ -50,11 +51,11 @@ const ReferralDashBoard = () => {
                 <div className="w-full flex flex-row border border-brand border-dotted p-1 pl-4 rounded-4xl">
                   <input
                     type="text"
-                    value={userData?.result?.user?.referralCode || ""}
+                    value={userData?.referralCode || ""}
                     className="w-full outline-0 h-10 "
                   />
 
-                  <CopyToClipboard text={userData?.result?.user?.referralCode}>
+                  <CopyToClipboard text={userData?.referralCode}>
                     <button className="bg-brand w-28 rounded-4xl text-black cursor-pointer">
                       Copy
                     </button>

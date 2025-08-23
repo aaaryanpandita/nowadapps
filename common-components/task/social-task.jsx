@@ -1,3 +1,4 @@
+"use client";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import React, { useState } from "react";
 import { useFormik } from "formik";
@@ -19,6 +20,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import Link from "next/link";
 import SocialShareModal from "./social-share-modal";
+import { useSearchParams } from "next/navigation";
 
 const validationSchema = Yup.object({
   twitter: Yup.string().required("Twitter id is required."),
@@ -31,6 +33,8 @@ const validationSchema = Yup.object({
 const SocialTask = ({ userDataRefetch }) => {
   const [shareModalState, setShareModalState] = useState(false);
   const { address } = useAccount();
+  const searchParams = useSearchParams();
+
   const [socialCheck, setSocialCheck] = useState({
     twitter: false,
     telegram: false,
@@ -42,9 +46,10 @@ const SocialTask = ({ userDataRefetch }) => {
       twitter: "",
       telegram: "",
       instagram: "",
-      referralCode: "",
+      referralCode: searchParams.get("parent_ref_code"),
       token: "",
     },
+    enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: (values) => {
       if (validateShares()) {
@@ -219,17 +224,23 @@ const SocialTask = ({ userDataRefetch }) => {
               </div>
               {/* //Instagram/// */}
               {/* //Referral code/// */}
-              <div className="flex items-center justify-between w-full gap-4">
-                <div className="flex flex-row w-full bg-[#030705] h-12 rounded-2xl items-center px-2">
-                  <div className="bg-gray-800 rounded-lg h-8 w-8 flex items-center justify-center ">
-                    <IconUsers size={24} />
+              <div>
+                <div className="flex items-center justify-between w-full gap-4">
+                  <div className="flex flex-row w-full bg-[#030705] h-12 rounded-2xl items-center px-2">
+                    <div className="bg-gray-800 rounded-lg h-8 w-8 flex items-center justify-center ">
+                      <IconUsers size={24} />
+                    </div>
+                    <input
+                      name="referralCode"
+                      value={formik.values?.referralCode}
+                      onChange={formik.handleChange}
+                      type="text"
+                      className="w-full outline-0 px-4"
+                      placeholder="Enter Referral Code"
+                    />
                   </div>
-                  <input
-                    type="text"
-                    className="w-full outline-0 px-4"
-                    placeholder="Enter Referral Code"
-                  />
                 </div>
+                <p className="text-red-500">{formik?.errors?.referralCode}</p>
               </div>
               {/* //Referral code/// */}
               {/* //Referral/// */}

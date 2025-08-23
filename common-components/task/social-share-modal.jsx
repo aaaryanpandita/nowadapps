@@ -14,7 +14,6 @@ import {
 } from "react-share";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useAccount } from "wagmi";
-import Loader from "../globals/loader";
 import { useConnectWallet } from "@/queries";
 
 const SocialShareModal = ({ open, close, clickHandler }) => {

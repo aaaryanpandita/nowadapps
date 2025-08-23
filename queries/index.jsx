@@ -98,8 +98,12 @@ export const dailyTasksUsers = async ({ walletAddress }) => {
 
 export const useReferredUsers = (walletAddress, currentPage) => {
   return useQuery({
-    queryKey: [walletAddress, "referredUsers", currentPage],
-    queryFn: () => referredUsers({ currentPage: currentPage }),
+    queryKey: [walletAddress, "getReferredUsers", currentPage],
+    queryFn: () =>
+      getReferredUsers({
+        currentPage: currentPage,
+        walletAddress: walletAddress,
+      }),
     select: (data) => {
       if (data?.data?.responseCode == 200) {
         return data?.data?.result;
@@ -110,12 +114,13 @@ export const useReferredUsers = (walletAddress, currentPage) => {
   });
 };
 
-export const referredUsers = async ({ currentPage }) => {
+export const getReferredUsers = async ({ currentPage, walletAddress }) => {
   try {
     const result = await api({
-      url: `/user/referredUsers`,
+      url: `/user/getReferredUsers`,
       method: "GET",
       params: {
+        walletAddress: walletAddress,
         page: currentPage,
         limit: 10,
       },
