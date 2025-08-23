@@ -336,7 +336,9 @@ const StakeClaim = () => {
               {isConnected ? (
                 <>
                   {isClaimable ? (
-                    <p>{isTransactionPending ? `Claiming...` : `Claim`}</p>
+                    <p>
+                      {isTransactionPending ? `Claiming...` : `Claim & Stake`}
+                    </p>
                   ) : (
                     <div className="flex items-center justify-between px-6">
                       <p className="bg-black/30 w-12 h-8 text-center rounded-lg flex items-center justify-center">

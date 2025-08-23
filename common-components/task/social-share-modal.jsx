@@ -37,8 +37,9 @@ const SocialShareModal = ({ open, close, clickHandler }) => {
     return `I’m already earning rewards on Nowa – and you can too!
 Join using my referral code and start claiming & staking NOWA tokens today.
 On every successful referral, you’ll receive rewards!
-Referral Code: ${userData?.referralCode}`;
-  }, [userData]);
+Referral Code: ${userData?.referralCode}
+Referral Link: ${share_url}`;
+  }, [userData, share_url]);
 
   return (
     <Modal open={open} close={() => {}}>

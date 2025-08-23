@@ -24,11 +24,11 @@ import { useSearchParams } from "next/navigation";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 const validationSchema = Yup.object({
-  twitter: Yup.string().required("X id is required."),
-  telegram: Yup.string().required("Telegram id is required."),
-  instagram: Yup.string().required("Instagram id is required."),
+  twitter: Yup.string().trim().required("X id is required."),
+  telegram: Yup.string().trim().required("Telegram id is required."),
+  instagram: Yup.string().trim().required("Instagram id is required."),
   // referralCode: Yup.string().optional(),
-  token: Yup.string().required("Captcha is required."),
+  token: Yup.string().trim().required("Captcha is required."),
 });
 
 const SocialTask = ({ userDataRefetch }) => {
