@@ -65,15 +65,23 @@ const HeroSection = () => {
   }, [userData, dailyTask]);
 
   return (
-    <div className="relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg ">
+    <div className="relative w-full overflow-hidden bg-brand-background flex flex-col items-center justify-center rounded-lg">
       <div className="absolute inset-0 w-full h-full bg-brand-background z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
       <div className=" container mx-auto grid grid-cols-12 mt-2 relative z-20 w-full pt-32  sm:py-36">
-        <div className="col-span-12 lg:col-span-6 flex flex-col items-start gap-10 relative  ">
-          <p className="text-6xl">Welcome to Nowa — Built with AI</p>
-          <p className="relative z-10">
-            The Future of Crypto Prediction is AI-Driven – Join NOWA.
+        <div className="col-span-12 lg:col-span-6 flex flex-col items-start gap-10 relative mt-25 ">
+          <p className="text-6xl">
+            90% of Crypto Traders Lose Money. Here's Why
           </p>
+          <p className="relative z-10">
+            While you guess market moves, institutions use AI to predict them
+            with 70%+ accuracy. <br />
+            <span>
+              NOWA changes that. Get the same predictive tools through simple
+              token staking.
+            </span>
+          </p>
+
           <Link href={"/docs/lite-paper.pdf"} target="_blank">
             <button className="bg-brand  py-2 flex flex-row px-3 gap-3 justify-center items-center rounded-3xl group cursor-pointer">
               <p className="text-black"> Read Litepaper</p>
