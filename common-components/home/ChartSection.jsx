@@ -25,7 +25,6 @@ const ChartSection = () => {
         </div>
         <div className="col-span-12 lg:col-span-6 flex flex-col gap-4 justify-center">
           {/* Contract Address Box */}
-          
 
           {/* Distribution Cards */}
           {cardData?.map((item, idx) => {
@@ -38,38 +37,39 @@ const ChartSection = () => {
                 )}
               >
                 <div className="w-full">
-                  <p className="font-medium text-white text-sm mb-1">{item?.label}</p>
-                  <p className="text-lg font-semibold text-white">{item?.subLabel}</p>
+                  <p className="font-medium text-white text-sm mb-1">
+                    {item?.label}
+                  </p>
+                  <p className="text-lg font-semibold text-white">
+                    {item?.subLabel}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
-        
       </div>
 
       {/* Contract Address Box - Bottom Section */}
       <div className="max-w-4xl mx-auto mt-12">
-        <a 
+        <a
           href={bscScanUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="block"
         >
-        <div className="bg-black border-2 border-green-600/60 rounded-lg p-6 hover:bg-gray-900 transition-all duration-200 cursor-pointer">
-  <div className="text-center">
-    <p className="text-white text-lg mb-3">
-      NOWA <span className="text-brand">ADDRESS</span>
-    </p>
-    <p className="text-white font-mono text-sm break-all">
-      {contractAddress}
-    </p>
-  </div>
-</div>
-
+          <div className="bg-black border-2 border-green-600/60 rounded-lg p-6 hover:bg-gray-900 transition-all duration-200 cursor-pointer">
+            <div className="text-center">
+              <p className="text-white text-lg mb-3">
+                NOWA <span className="text-brand">ADDRESS</span>
+              </p>
+              <p className="text-white font-mono text-sm break-all">
+                {contractAddress}
+              </p>
+            </div>
+          </div>
         </a>
       </div>
-
     </Container>
   );
 };
