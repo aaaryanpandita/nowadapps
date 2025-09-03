@@ -133,7 +133,7 @@ const SocialTask = ({ userDataRefetch }) => {
                       type="text"
                       name="twitter"
                       className="w-full outline-0 px-4"
-                      placeholder="Enter X ID"
+                      placeholder="Enter Your X ID"
                       value={formik.values.twitter}
                       onChange={formik.handleChange}
                     />
@@ -170,7 +170,7 @@ const SocialTask = ({ userDataRefetch }) => {
                       onChange={formik.handleChange}
                       type="text"
                       className="w-full outline-0 px-4"
-                      placeholder="Enter Telegram User Name"
+                      placeholder="Enter Your Telegram User Name"
                     />
                   </div>
                   <Link
@@ -205,7 +205,7 @@ const SocialTask = ({ userDataRefetch }) => {
                       onChange={formik.handleChange}
                       type="text"
                       className="w-full outline-0 px-4"
-                      placeholder="Enter Instagram ID"
+                      placeholder="Enter Your Instagram ID"
                     />
                   </div>
                   <Link

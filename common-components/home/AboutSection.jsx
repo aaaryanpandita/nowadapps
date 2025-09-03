@@ -60,35 +60,37 @@ const AboutSection = () => {
                 alt=""
                 className="object-contain w-full"
               />
-              <p>
-                Start Winning
+              <p>Start Winning</p>
+              <p className="text-white/60 text-sm">
+                Make informed trading decisions
               </p>
               <p className="text-white/60 text-sm">
-               Make informed trading decisions
+                Participate in prediction contests
               </p>
-              <p className="text-white/60 text-sm">
-               Participate in prediction contests
-              </p>
-              <p className="text-white/60 text-sm">
-               Earn rewards for accuracy
-              </p>
+              <p className="text-white/60 text-sm">Earn rewards for accuracy</p>
             </div>
           </AboutCard>
         </div>
         <div className="col-span-12 md:col-span-4 md:row-span-2 text-2xl hidden md:flex"></div>
-        <div className="md:col-start-2 col-span-12 md:col-span-3 md:row-span-4 bg-brand/40 text-2xl p-4 rounded-2xl">
-          <p>We are suitable for</p>
+
+        <div
+          className="md:col-start-2 col-span-12 sm:col-span-6 md:col-span-3 md:row-span-4 
+                bg-brand/40 text-base sm:text-lg md:text-xl 
+                p-4 sm:p-6 md:p-8 rounded-2xl text-center"
+        >
+          <p className="mb-4 font-semibold">We are suitable for</p>
           <FallingText
             text={`Transparency Accuracy Community-Driven Global-React Decentralized Governance`}
+            fontSize="clamp(0.85rem, 1.2vw, 1.1rem)" // 👈 auto-resizes
             highlightClass="highlighted"
             trigger="hover"
             backgroundColor="transparent"
             wireframes={false}
             gravity={0.56}
-            fontSize="1.4rem"
             mouseConstraintStiffness={0.9}
           />
         </div>
+
         <div className="col-span-12 md:col-span-4 md:row-span-3  text-2xl">
           <AboutCard>
             <div className="flex p-6 flex-col gap-2">

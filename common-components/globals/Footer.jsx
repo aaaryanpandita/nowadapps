@@ -237,46 +237,41 @@ const Footer = () => {
         <div className="w-full grid grid-cols-12 ">
           <div className="col-span-12 md:col-span-6">
             <p className="text-lg relative z-50">
-              NOWA is more than a platform — it’s a global movement. Join our
-              community to stay updated, share strategies, and participate in
-              shaping the future of AI-powered trading.
+              The crypto market doesn't have to be a guessing game. While others
+              hope their trades work out, you can make informed decisions with
+              institutional-grade AI predictions. Your 20,000 FREE tokens are
+              waiting.
             </p>
           </div>
-          <div className="col-span-12 md:col-span-6 flex items-center md:items-end flex-col gap-6 mt-4 md:mt-0">
-            <p className="text-brand">Follow us On</p>
-            <div className="flex flex-col gap-4">
-              <Link
-                className="flex flex-row gap-2 "
-                target="_blank"
-                href={social.TELEGRAM}
-              >
-                <IconBrandTelegram color="rgb(0, 255, 169)" />
-                <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
-                  Telegram
-                </p>
-              </Link>
-              <Link
-                className="flex flex-row gap-2"
-                target="_blank"
-                href={social.TWITTER}
-              >
-                <IconBrandTwitter color="rgb(0, 255, 169)" />
-                <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
-                  X (Twitter)
-                </p>
-              </Link>
-              <Link
-                className="flex flex-row gap-2"
-                target="_blank"
-                href={social.INSTAGRAM}
-              >
-                <IconBrandInstagram color="rgb(0, 255, 169)" />
-                <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
-                  Instagram
-                </p>
-              </Link>
-            </div>
-          </div>
+         <div className="col-span-12 md:col-span-6 flex items-center md:items-end flex-col gap-6 mt-4 md:mt-0">
+  {/* Follow us Section */}
+  <div className="flex flex-col gap-4">
+    <p className="text-brand">Follow us On</p>
+    <Link className="flex flex-row gap-2" target="_blank" href={social.TELEGRAM}>
+      <IconBrandTelegram color="rgb(0, 255, 169)" />
+      <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
+        Telegram
+      </p>
+    </Link>
+    <Link className="flex flex-row gap-2" target="_blank" href={social.TWITTER}>
+      <IconBrandTwitter color="rgb(0, 255, 169)" />
+      <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
+        X (Twitter)
+      </p>
+    </Link>
+    <Link className="flex flex-row gap-2" target="_blank" href={social.INSTAGRAM}>
+      <IconBrandInstagram color="rgb(0, 255, 169)" />
+      <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer">
+        Instagram
+      </p>
+    </Link>
+
+    <Link className="flex flex-row items-center gap-2" target="_blank" href="https://bscscan.com/address/0xf3e21b3d39e55fd5515f0a26a664fee2f4d62ee2" > {/* Minimal BSC Circle Logo - Green */} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-6 h-6" > <circle cx="16" cy="16" r="16" fill="rgb(0, 255, 169)" /> <path d="M16 7l2.9 2.9-2.9 2.9-2.9-2.9L16 7zm0 5.8l2.9 2.9-2.9 2.9-2.9-2.9L16 12.8zm0 5.8l2.9 2.9L16 24.4l-2.9-2.9L16 18.6z" fill="white" /> </svg> <p className="text-white/50 hover:text-white transition-colors delay-100 duration-100 ease-linear cursor-pointer"> Contract: 0xf3e2...ee2 </p> </Link>
+  </div>
+
+  
+</div>
+
         </div>
       </div>
     </div>
