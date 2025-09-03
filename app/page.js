@@ -14,10 +14,10 @@ export default function Home() {
       <div className="flex flex-col gap-32 mx-2 ">
         <HeroSection />
       </div>
-      <MacBookScrollSection />
+      <NextGenSection />
       <div className="flex flex-col gap-32 mx-2 mb-28">
         <AboutSection />
-        <NextGenSection />
+        <MacBookScrollSection/>
         <ChartSection />
         <TimeLineSection />
         {/* <MarqueeSection /> */}

@@ -6,6 +6,7 @@ import { useTailwindBreakpoints } from "@/hooks/useTailwindBreakpoints";
 echarts.registerTheme("my_theme", {
   backgroundColor: "rgb(18 19 19)",
 });
+
 export default function NightingaleChart({ cardData }) {
   const { sm, md, lg, xl, "2xl": xxl } = useTailwindBreakpoints();
 
@@ -14,7 +15,7 @@ export default function NightingaleChart({ cardData }) {
     const color = cardData?.map((item) => item?.color);
     const data = cardData?.map((item) => {
       return {
-        value: item?.amount,
+        value: parseFloat(item?.subLabel.replace('%', '')), // Use percentage directly
         name: item?.label,
       };
     });
@@ -29,6 +30,9 @@ export default function NightingaleChart({ cardData }) {
     color: chartDataFormatted?.color,
     tooltip: {
       trigger: "item",
+      formatter: function(params) {
+        return `${params.name}: ${params.value}%`;
+      }
     },
     legend: {
       top: "5%",
@@ -53,9 +57,12 @@ export default function NightingaleChart({ cardData }) {
         emphasis: {
           label: {
             show: true,
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: "bold",
             color: "white",
+            formatter: function(params) {
+              return `${params.name}\n${params.value}%`;
+            }
           },
         },
         labelLine: {
@@ -65,41 +72,6 @@ export default function NightingaleChart({ cardData }) {
       },
     ],
   };
-
-  // const option = {
-  //   color: chartDataFormatted?.color,
-  //   title: {
-  //     // text: "Nightingale Chart",
-  //     // subtext: "Fake Data",
-  //     left: "center",
-  //   },
-  //   legend: {
-  //     left: "center",
-  //     top: "bottom",
-  //     orient: "vertical",
-  //     data: chartDataFormatted?.labels,
-  //     show: false,
-  //   },
-
-  //   series: [
-  //     {
-  //       name: "Area Mode",
-  //       type: "pie",
-  //       radius: chartSize,
-  //       // roseType: "area",
-  //       itemStyle: {
-  //         borderRadius: 5,
-  //       },
-  //       label: {
-  //         show: false,
-  //         // show: sm,
-  //         // color: "#ffffff",
-  //       },
-
-  //       data: chartDataFormatted?.data,
-  //     },
-  //   ],
-  // };
 
   return (
     <ReactECharts
