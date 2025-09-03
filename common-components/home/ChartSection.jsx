@@ -5,6 +5,9 @@ import { formatNice } from "coin-format";
 import { cn } from "@/lib/utils";
 
 const ChartSection = () => {
+  const contractAddress = "0xf3e21b3d39e55fd5515f0a26a664fee2f4d62ee2";
+  const bscScanUrl = `https://bscscan.com/token/${contractAddress}`;
+
   return (
     <Container>
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10 text-center mb-12">
@@ -21,6 +24,9 @@ const ChartSection = () => {
           <NightingaleChart cardData={cardData} />
         </div>
         <div className="col-span-12 lg:col-span-6 flex flex-col gap-4 justify-center">
+          {/* Contract Address Box */}
+          
+
           {/* Distribution Cards */}
           {cardData?.map((item, idx) => {
             return (
@@ -39,7 +45,31 @@ const ChartSection = () => {
             );
           })}
         </div>
+        
       </div>
+
+      {/* Contract Address Box - Bottom Section */}
+      <div className="max-w-4xl mx-auto mt-12">
+        <a 
+          href={bscScanUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+        <div className="bg-black border-2 border-green-600/60 rounded-lg p-6 hover:bg-gray-900 transition-all duration-200 cursor-pointer">
+  <div className="text-center">
+    <p className="text-white text-lg mb-3">
+      NOWA <span className="text-brand">ADDRESS</span>
+    </p>
+    <p className="text-white font-mono text-sm break-all">
+      {contractAddress}
+    </p>
+  </div>
+</div>
+
+        </a>
+      </div>
+
     </Container>
   );
 };

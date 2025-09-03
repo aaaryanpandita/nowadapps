@@ -6,7 +6,7 @@ import ChartSection from "@/common-components/home/ChartSection";
 import HeroSection from "@/common-components/home/HeroSection";
 import { MacBookScrollSection } from "@/common-components/home/MacBookScrollSection";
 import MarqueeSection from "@/common-components/home/MarqueeSection";
-import { AirdropTime } from "@/common-components/home/AirdropTime";
+import  AirdropTime  from "@/common-components/home/AirdropTime";
 import NextGenSection from "@/common-components/home/NextGenSection";
 import { TimeLineSection } from "@/common-components/home/TimeLineSection";
 import FAQSection from "@/common-components/home/FAQSection";
