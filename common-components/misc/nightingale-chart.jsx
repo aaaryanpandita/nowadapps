@@ -68,13 +68,64 @@ export default function NightingaleChart({ cardData }) {
     );
   }
 
+  // Responsive configuration based on screen size
+  const getResponsiveConfig = () => {
+    if (!sm) { // Mobile
+      return {
+        radius: ["50%", "85%"],
+        fontSize: 12,
+        maxNameLength: 12,
+        maxLineLength: 10,
+        lineHeight: 14,
+        borderWidth: 1,
+        height: '350px'
+      };
+    } else if (!md) { // Small tablet
+      return {
+        radius: ["55%", "88%"],
+        fontSize: 13,
+        maxNameLength: 18,
+        maxLineLength: 12,
+        lineHeight: 15,
+        borderWidth: 1.5,
+        height: '400px'
+      };
+    } else if (!lg) { // Medium tablet
+      return {
+        radius: ["60%", "90%"],
+        fontSize: 14,
+        maxNameLength: 20,
+        maxLineLength: 15,
+        lineHeight: 16,
+        borderWidth: 2,
+        height: '400px'
+      };
+    } else { // Desktop
+      return {
+        radius: ["65%", "95%"],
+        fontSize: 14,
+        maxNameLength: 25,
+        maxLineLength: 15,
+        lineHeight: 16,
+        borderWidth: 2,
+        height: '400px'
+      };
+    }
+  };
+
+  const config = getResponsiveConfig();
+
   const option = {
     color: chartDataFormatted.color,
     tooltip: {
       trigger: "item",
       formatter: function(params) {
         return `${params.name}: ${params.value}%`;
-      }
+      },
+      textStyle: {
+        fontSize: !sm ? 12 : 14
+      },
+      confine: true, // Keep tooltip within chart area
     },
     legend: {
       top: "5%",
@@ -85,12 +136,13 @@ export default function NightingaleChart({ cardData }) {
       {
         name: "Token Distribution",
         type: "pie",
-        radius: ["65%", (sm !== undefined && sm) ? "90%" : "95%"],
-        avoidLabelOverlap: false,
+        radius: config.radius,
+        center: ['50%', '50%'],
+        avoidLabelOverlap: true, // Enable label overlap avoidance
         itemStyle: {
-          borderRadius: 10,
+          borderRadius: !sm ? 6 : 10,
           borderColor: "#fff",
-          borderWidth: 2,
+          borderWidth: config.borderWidth,
         },
         label: {
           show: false,
@@ -99,23 +151,25 @@ export default function NightingaleChart({ cardData }) {
         emphasis: {
           label: {
             show: true,
-            fontSize: 14,
+            fontSize: config.fontSize,
             fontWeight: "bold",
             color: "white",
             formatter: function(params) {
-              // Truncate long text and add line breaks for better fit
               let name = params.name;
-              if (name.length > 25) {
-                name = name.substr(0, 25) + '...';
+              
+              // Truncate based on screen size
+              if (name.length > config.maxNameLength) {
+                name = name.substr(0, config.maxNameLength) + '...';
               }
-              // Break long names into multiple lines
+              
+              // Break long names into multiple lines with responsive line length
               const words = name.split(' ');
               let lines = [];
               let currentLine = '';
               
               for (let i = 0; i < words.length; i++) {
                 const word = words[i];
-                if ((currentLine + word).length > 15 && currentLine !== '') {
+                if ((currentLine + word).length > config.maxLineLength && currentLine !== '') {
                   lines.push(currentLine.trim());
                   currentLine = word + ' ';
                 } else {
@@ -126,16 +180,28 @@ export default function NightingaleChart({ cardData }) {
                 lines.push(currentLine.trim());
               }
               
+              // Limit lines on mobile
+              if (!sm && lines.length > 2) {
+                lines = lines.slice(0, 2);
+                if (lines[1]) {
+                  lines[1] = lines[1].substr(0, config.maxLineLength - 3) + '...';
+                }
+              }
+              
               return lines.join('\n') + `\n${params.value}%`;
             },
             textStyle: {
-              lineHeight: 16,
+              lineHeight: config.lineHeight,
               textShadowColor: 'rgba(0, 0, 0, 0.8)',
               textShadowBlur: 2,
               textShadowOffsetX: 1,
               textShadowOffsetY: 1,
             }
           },
+          itemStyle: {
+            shadowBlur: !sm ? 5 : 10,
+            shadowColor: 'rgba(0, 0, 0, 0.3)'
+          }
         },
         labelLine: {
           show: false,
@@ -146,12 +212,15 @@ export default function NightingaleChart({ cardData }) {
   };
 
   return (
-    <div style={{ width: '100%', height: '400px' }}>
+    <div style={{ width: '100%', height: config.height }} className="relative">
       <ReactECharts
         theme={"my_theme"}
         option={option}
         style={{ height: "100%", width: "100%" }}
-        opts={{ renderer: 'canvas' }}
+        opts={{ 
+          renderer: 'canvas',
+          devicePixelRatio: window.devicePixelRatio || 1
+        }}
         onChartReady={() => {
           console.log("Chart rendered successfully");
         }}
