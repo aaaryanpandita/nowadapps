@@ -1,7 +1,9 @@
 import axios from "axios";
 
-// export const baseUrl = `http://172.16.16.206:8083`; //Akash
+// export const baseUrl = `http://172.16.16.206:8083`; //Aakash
+// export const baseUrl = `https://nowa-ref-api.tarality.io`; // Production - 
 export const baseUrl = `https://nowa-ref-api.tarality.io`;
+
 
 const api = axios.create({
   baseURL: `${baseUrl}/api/v1`,
