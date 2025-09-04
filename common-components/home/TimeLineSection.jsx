@@ -17,9 +17,11 @@ const data = [
           Phase 1 – Foundation
         </p>
         <ol className="text-2xl">
-          <li>1. Token Launch</li>
-          <li>2. Airdrop & Staking Program Live</li>
-          <li>3. AI Prediction Engine (Beta)</li>
+          <li> 4-phase airdrop campaign</li>
+          <li> Beta dApp launch with 50 asset predictions</li>
+          <li> Prediction mining protocol activation</li>
+          <li> Community staking gateway</li>
+          <li> ICO launch for broader participation</li>
         </ol>
       </div>
     ),
@@ -29,12 +31,14 @@ const data = [
     content: (
       <div>
         <p className="mb-8 text-4xl font-semibold dark:text-neutral-200">
-          Phase 2 – Gamification
+          Phase 2 – Scale
         </p>
         <ol className="text-2xl">
-          <li>1. Launch of "Beat the AI" Mode</li>
-          <li>2. AI Model 2.0 with Self-Learning</li>
-          <li>3. Strategic Exchange Listings</li>
+          <li> Expansion to 500+ cryptocurrency predictions</li>
+          <li> AI yield engine deployment</li>
+          <li> Advanced analytics dashboard</li>
+          <li> Major exchange listings</li>
+          <li> Governance framework beta</li>
         </ol>
       </div>
     ),
@@ -44,12 +48,14 @@ const data = [
     content: (
       <div>
         <p className="mb-8 text-4xl font-semibold dark:text-neutral-200">
-          Phase 3 – Growth & Expansion
+          Phase 3 – Growth 
         </p>
         <ol className="text-2xl">
-          <li>1. Multi-Chain Integration</li>
-          <li>2. AI Model 2.0 with Self-Learning</li>
-          <li>3. Global Marketing Campaigns</li>
+          <li> Cross-chain protocol integration</li>
+          <li> Mobile application launch</li>
+          <li> Prediction tournament system</li>
+          <li> Strategic DeFi partnerships</li>
+          <li> Global marketing acceleration</li>
         </ol>
       </div>
     ),
@@ -59,30 +65,16 @@ const data = [
     content: (
       <div>
         <p className="mb-8 text-4xl font-semibold dark:text-neutral-200">
-          Phase 4 – Ecosystem Development
+          Phase 4 – Expansion
         </p>
         <ol className="text-2xl">
-          <li>1. Prediction Liquidity Pools</li>
-          <li>2. AI Trading Signals Marketplace</li>
-          <li>3. DAO Governance Launch</li>
-          <li>3. Institutional API Access</li>
+          <li> Multi-asset predictions (stocks, forex, commodities)</li>
+          <li> AI financial assistant features</li>
+          <li> Enterprise API offerings</li>
+          <li> International market penetration</li>
         </ol>
       </div>
     ),
   },
-  {
-    title: "05",
-    content: (
-      <div>
-        <p className="mb-8 text-4xl font-semibold dark:text-neutral-200">
-          Phase 5 – Global Domination & Web3 AI Hub
-        </p>
-        <ol className="text-2xl">
-          <li>1. Full-Scale AI Trading Platform</li>
-          <li>2. AI Data Monetization</li>
-          <li>3. Sustainability Plan</li>
-        </ol>
-      </div>
-    ),
-  },
+
 ];

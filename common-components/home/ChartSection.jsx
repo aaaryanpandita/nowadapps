@@ -24,8 +24,6 @@ const ChartSection = () => {
           <NightingaleChart cardData={cardData} />
         </div>
         <div className="col-span-12 lg:col-span-6 flex flex-col gap-4 justify-center">
-          {/* Contract Address Box */}
-
           {/* Distribution Cards */}
           {cardData?.map((item, idx) => {
             return (
@@ -78,34 +76,69 @@ export default ChartSection;
 
 const total_supply = 10000000000;
 
-// Fixed distribution - percentages now add up to exactly 100%
+// Updated distribution based on handwritten notes - percentages add up to exactly 100%
 const cardData = [
   {
-    label: "Community(Airdrops, staking, rewards)",
-    subLabel: "77.5%",
-    amount: total_supply * (77.5 / 100),
+    label: "Airdrop",
+    subLabel: "40%",
+    amount: total_supply * (40 / 100),
     color: "#FF00D4",
     border: "border-l-[#FF00D4]",
   },
   {
-    label: "Development & Marketing",
-    subLabel: "10%",
-    amount: total_supply * (10 / 100),
+    label: "Staking Rewards",
+    subLabel: "12.5%",
+    amount: total_supply * (12.5 / 100),
     color: "#FF2A00",
     border: "border-l-[#FF2A00]",
   },
   {
-    label: "Liquidity & Exchange Listings",
-    subLabel: "7.5%",
-    amount: total_supply * (7.5 / 100),
+    label: "Prediction Mining",
+    subLabel: "10%",
+    amount: total_supply * (10 / 100),
     color: "#AA00FF",
     border: "border-l-[#AA00FF]",
   },
   {
-    label: "Ecosystem Reserve",
-    subLabel: "5%",
-    amount: total_supply * (5 / 100),
+    label: "Community Rewards",
+    subLabel: "10%",
+    amount: total_supply * (10 / 100),
     color: "#D4FF00",
     border: "border-l-[#D4FF00]",
+  },
+  {
+    label: "Liquidity",
+    subLabel: "7.5%",
+    amount: total_supply * (7.5 / 100),
+    color: "#00D4FF",
+    border: "border-l-[#00D4FF]",
+  },
+  {
+    label: "Team",
+    subLabel: "5%",
+    amount: total_supply * (5 / 100),
+    color: "#FF6B00",
+    border: "border-l-[#FF6B00]",
+  },
+  {
+    label: "Marketing Partnership",
+    subLabel: "5%",
+    amount: total_supply * (5 / 100),
+    color: "#00FF6B",
+    border: "border-l-[#00FF6B]",
+  },
+  {
+    label: "Sales",
+    subLabel: "5%",
+    amount: total_supply * (5 / 100),
+    color: "#6B00FF",
+    border: "border-l-[#6B00FF]",
+  },
+  {
+    label: "Treasury",
+    subLabel: "5%",
+    amount: total_supply * (5 / 100),
+    color: "#FFD400",
+    border: "border-l-[#FFD400]",
   },
 ];
