@@ -6,28 +6,49 @@
         "name": "_stakingToken",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "_minStakeInWei", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_minStakeInWei",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_initialOwner",
+        "type": "address"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "owner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
     ],
     "name": "OwnableInvalidOwner",
     "type": "error"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "OwnableUnauthorizedAccount",
     "type": "error"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "token", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
     ],
     "name": "SafeERC20FailedOperation",
     "type": "error"
@@ -138,6 +159,32 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "user",
@@ -156,31 +203,39 @@
   {
     "inputs": [],
     "name": "apy",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
-      { "internalType": "uint256", "name": "_time", "type": "uint256" }
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    "name": "calculateReward",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "claimInterval",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "claimPercent",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -193,7 +248,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "emergencyWithdraw",
     "outputs": [],
@@ -203,23 +262,58 @@
   {
     "inputs": [],
     "name": "minStakeAmount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
     ],
     "name": "pendingReward",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -233,13 +327,23 @@
   {
     "inputs": [],
     "name": "rewardClaimTime",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_apy", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_apy",
+        "type": "uint256"
+      }
     ],
     "name": "setAPY",
     "outputs": [],
@@ -248,7 +352,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_interval", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_interval",
+        "type": "uint256"
+      }
     ],
     "name": "setClaimInterval",
     "outputs": [],
@@ -257,7 +365,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_percent", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_percent",
+        "type": "uint256"
+      }
     ],
     "name": "setClaimPercent",
     "outputs": [],
@@ -266,7 +378,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_minStakeInWei", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_minStakeInWei",
+        "type": "uint256"
+      }
     ],
     "name": "setMinStakeAmount",
     "outputs": [],
@@ -275,7 +391,24 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_timestamp", "type": "uint256" }
+      {
+        "internalType": "bool",
+        "name": "_setPaused",
+        "type": "bool"
+      }
+    ],
+    "name": "setPaused",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_timestamp",
+        "type": "uint256"
+      }
     ],
     "name": "setRewardClaimTime",
     "outputs": [],
@@ -284,7 +417,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_timestamp", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_timestamp",
+        "type": "uint256"
+      }
     ],
     "name": "setStakeClaimTime",
     "outputs": [],
@@ -293,8 +430,16 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "userAddress", "type": "address" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
     "name": "stake",
     "outputs": [],
@@ -304,7 +449,13 @@
   {
     "inputs": [],
     "name": "stakeClaimTime",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -312,7 +463,11 @@
     "inputs": [],
     "name": "stakingToken",
     "outputs": [
-      { "internalType": "contract IERC20", "name": "", "type": "address" }
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -320,34 +475,62 @@
   {
     "inputs": [],
     "name": "totalRewardClaim",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "totalStakeAmount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "totalStakeClaimAmount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "totalUniqueAddress",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "transferOwnership",
     "outputs": [],
@@ -355,19 +538,45 @@
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "name": "userInfo",
     "outputs": [
-      { "internalType": "uint256", "name": "amount", "type": "uint256" },
-      { "internalType": "uint256", "name": "rewardStored", "type": "uint256" },
-      { "internalType": "uint256", "name": "rewardClaimed", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rewardStored",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rewardClaimed",
+        "type": "uint256"
+      },
       {
         "internalType": "uint256",
         "name": "lastUpdateTime",
         "type": "uint256"
       },
-      { "internalType": "uint256", "name": "lastClaimTime", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountclaimed", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "lastClaimTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amountclaimed",
+        "type": "uint256"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
