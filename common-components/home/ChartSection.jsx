@@ -23,28 +23,30 @@ const ChartSection = () => {
         <div className="col-span-12 lg:col-span-6 min-h-96 lg:min-h-auto">
           <NightingaleChart cardData={cardData} />
         </div>
-        <div className="col-span-12 lg:col-span-6 flex flex-col gap-4 justify-center">
-          {/* Distribution Cards */}
-          {cardData?.map((item, idx) => {
-            return (
-              <div
-                key={idx}
-                className={cn(
-                  "backdrop-blur-3xl bg-white/10 p-4 px-5 border-l-4 rounded-l-sm hover:scale-105 transition-all delay-150 duration-150 ease-linear cursor-pointer",
-                  item?.border
-                )}
-              >
-                <div className="w-full">
-                  <p className="font-medium text-white text-sm mb-1">
-                    {item?.label}
-                  </p>
-                  <p className="text-lg font-semibold text-white">
-                    {item?.subLabel}
-                  </p>
+        <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
+          {/* Distribution Cards - Grid Layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {cardData?.map((item, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    "backdrop-blur-3xl bg-white/10 p-4 px-5 border-l-4 rounded-l-sm hover:scale-105 transition-all delay-150 duration-150 ease-linear cursor-pointer",
+                    item?.border
+                  )}
+                >
+                  <div className="w-full">
+                    <p className="font-medium text-white text-sm mb-1">
+                      {item?.label}
+                    </p>
+                    <p className="text-lg font-semibold text-white">
+                      {item?.subLabel}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
