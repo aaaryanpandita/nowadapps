@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 const ChartSection = () => {
   const contractAddress = "0xf3e21b3d39e55fd5515f0a26a664fee2f4d62ee2";
   const bscScanUrl = `https://bscscan.com/token/${contractAddress}`;
+  const auditUrl =
+    "https://app.solidproof.io/projects/nowa?audit=b4597200-999b-4307-a9ae-65a596b8f2e5";
 
   return (
     <Container>
@@ -50,15 +52,16 @@ const ChartSection = () => {
         </div>
       </div>
 
-      {/* Contract Address Box - Bottom Section */}
-      <div className="max-w-4xl mx-auto mt-12">
+      {/* Contract Address + Audit Section side by side */}
+      <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Contract Address Box */}
         <a
           href={bscScanUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="block"
         >
-          <div className="bg-black border-2 border-green-600/60 rounded-lg p-6 hover:bg-gray-900 transition-all duration-200 cursor-pointer">
+          <div className="bg-black border-2 border-green-600/60 rounded-lg p-6 hover:bg-gray-900 transition-all duration-200 cursor-pointer h-full flex flex-col justify-center">
             <div className="text-center">
               <p className="text-white text-lg mb-3">
                 NOWA <span className="text-brand">ADDRESS</span>
@@ -66,6 +69,33 @@ const ChartSection = () => {
               <p className="text-white font-mono text-sm break-all">
                 {contractAddress}
               </p>
+            </div>
+          </div>
+        </a>
+
+        {/* Contract Audit Section */}
+        <a
+          href={auditUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <div className="bg-black border-2 border-green-600/60 rounded-lg p-6 hover:bg-gray-900  hover:from-blue-900/30 hover:to-purple-900/30  transition-all duration-200 cursor-pointer h-full flex items-center justify-center">
+            <div className="flex items-center gap-4">
+              <img
+                src="/assets/brand/solidproff.svg"
+                alt="SolidProof Audit"
+                className="h-12 w-auto object-contain"
+              />
+              <div className="text-left">
+                <p className="text-white text-lg font-semibold">
+                  Contract{" "}
+                  <span className="text-brand">Audited & Verified</span>
+                </p>
+                <p className="text-neutral-300 text-sm">
+                  Click to view full audit report
+                </p>
+              </div>
             </div>
           </div>
         </a>
