@@ -10,16 +10,25 @@ import { Loader2, Share } from "lucide-react";
 import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { toast } from "sonner";
+import { useEffect } from "react"; 
+import { useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
 
 const ReferralDashBoard = () => {
-  const { address } = useAccount();
+  const { address,isConnected } = useAccount();
   const [shareDataModalState, setShareDataModalState] = useState(false);
   const { data: referredData, isPending: referredDataPending } =
     useReferredUsers(address, 1);
   const { data: userData, isPending: userDataPending } = useConnectWallet({
     walletAddress: address,
   });
+  const router = useRouter();
+
+  useEffect(() => {
+  if (!isConnected) {
+    router.push('/');
+  }
+}, [isConnected, router]);
 
   if (referredDataPending | userDataPending) {
     return (
