@@ -1,0 +1,12 @@
+pipelines:
+  branches:
+    UAT:
+      - step:
+          name: Deploy stg nowadapp
+          script:
+            - pipe: atlassian/ssh-run:0.7.1
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SERVER_IP
+                PORT: $PORT
+                COMMAND: "bash /var/www/script/nowadapp.sh"
